@@ -1,0 +1,194 @@
+1a)
+
+int[] counts;
+
+1b)
+
+double[] times;
+
+1c)
+
+boolean[] visible;
+
+1d)
+
+String[] names;
+
+
+
+2a)
+
+int[] counts = { 18, 3, 9, 22, 11, 4 };
+
+2b)
+
+double[] times = { 1.52, 1.98, 1.44, 1.63, 1.67 }
+
+2c)
+
+boolean[] visible = { true, false, false, true, false };
+
+2d)
+
+String[] names = { "Alice", "Bob", "Carol", "Dave" };
+
+
+
+3a)
+
+int[] counts = new int[10];
+
+3b)
+
+double[] times = new double[40];
+
+3c)
+
+boolean[] visible = new boolean[100]; // INCORRECT, should have been 1000 (careless)
+
+3d)
+
+String[] names = new String[100];
+
+
+4a)
+
+for(int count : counts) { ... }
+
+4b)
+
+for(double time : times) { ... }
+
+4c)
+
+for(boolean visibleItem : visible) { ... }
+
+4d)
+
+for(String name : names) { ... }
+
+
+
+5a) The name is args. The type is an array of String (i.e. String[])
+
+5b) Arrays are indexed starting at zero. Therefore, the highest index is one less than the length.
+
+5c)
+
+i = 0 and target != data[i] (7 != 3)
+i = 1 and target != data[i] (7 != 14)
+i = 2 and target == data[i] (7 == 7)
+
+The method returns 7.
+
+5d)
+
+i = 0 and target != data[i] (100 != 3)
+i = 1 and target != data[i] (100 != 14)
+i = 2 and target != data[i] (100 != 7)
+i = 3 and target != data[i] (100 != 22)
+i = 4 and target != data[i] (100 != 45)
+i = 5 and target != data[i] (100 != 12)
+i = 6 and target != data[i] (100 != 19)
+i = 7 and target != data[i] (100 != 42)
+i = 8 and target != data[i] (100 != 6)
+
+The loop terminates without returning.
+The method returns -1;
+
+
+6) The enhanced for loop is used when you do not need access to the index. In this case, the index
+is needed so that we can return it as the return value of the method.
+
+7) The == works because the type of the array is int. When comparing primitives, == will compare the
+values. There is no .equals method on a primitive so the equals method would not work.
+
+8)
+
+public class ArrayFunctions {
+  public static int linearSearch(int[] data, int target) {
+    for(int i = 0; i < data.length; i++) {
+      if(target == data[i]) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  public static void main(String[] args) {
+    int[] data = { 3, 14, 7, 22, 45, 12, 19, 42, 6 };
+
+    for(int target : data) {
+      System.out.println("Search for " + target + " : " + linearSearch(data, target));
+    }
+  }
+}
+
+
+9)
+
+public static int sum(int[] data) {
+  int sum = 0;
+
+  for(int datum : data) {
+    sum += datum;
+  }
+
+  return sum;
+}
+
+
+10)
+
+public static int max(int[] data) {
+  int max = data[0];
+
+  for(int i = 1; i < data.length; i++) {
+    if(data[i] > max) {
+      max = data[i];
+    }
+  }
+
+  return max;
+}
+
+
+
+11)
+
+public static int min(int[] data) {
+  int min = data[0];
+
+  for(int i = 1; i < data.length; i++) {
+    if(data[i] < min) {
+      min = data[i];
+    }
+  }
+
+  return min;
+}
+
+
+12)
+
+
+public static void displayArray(int[] data) {
+  for(int i = 0; i < data.length; i++) {
+    System.out.print(data[i] + " ");
+
+    if(i == data.length - 1) {
+      System.out.println();
+    }
+  }
+}
+
+// The last answer, although correct, is not as good as his.
+
+public static void displayArray(int[] data) {
+  for(int i = 0; i < data.length; i++) {
+    System.out.print(data[i] + " ");
+  }
+
+  System.out.println();
+}

@@ -36,7 +36,7 @@ public class NumericFunctions {
 
     return m;
   }
-/*
+
   public static void main(String[] args) {
 
     // test factorial
@@ -86,6 +86,5 @@ public class NumericFunctions {
       System.out.println();
     }
   }
-  */
 }
 
