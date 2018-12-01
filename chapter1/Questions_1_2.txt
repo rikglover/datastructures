@@ -1,0 +1,96 @@
+1a) 15
+1b) s
+1c) 1
+1d) -1
+1e) 5
+1f) 3 (INCORRECT, should be 6)
+1g) 3 (INCORRECT, should be 10)
+1h) 0
+1i) -1
+1j) structures
+1k) at
+1l) DATA STRUCTURES
+
+
+2a) 25
+2b) 'J'
+2c) -1
+2d) 14
+2e) 8
+2f) 15
+2g) 20
+2h) 6
+2i) 9
+2j) "programming language"
+2k) "programm" (INCORRECT, should be "program")
+2l) "java programming language"
+
+3a) false
+3b) true
+3c) true
+3d) true
+
+4a) positive
+4b) positive
+4c) negative
+4d) 0
+
+5a) s.length()
+5b) s.charAt(2)
+5c) s.substring(2, 5)
+5d) s.substring(3)
+
+6a) if(s.equals(t)) { ... }
+6b) if(!s.equals(t)) { ... }
+6c) if(s.compareTo(t) < 0) { ... }
+
+7) if(piece == target) count++; // This will not compare the contents of the strings. It compares the address in VM memory.
+
+8)
+
+private static int countIgnoreCase(String s, String target) {
+  String sUpperCase = s.toUpperCase();
+  String targetUpperCase = target.toUpperCase();
+
+  return count(sUpperCase, targetUpperCase);
+}
+
+
+9)
+
+private static int count2(String s, String target) {
+  int count = 0;
+  int n = target.length();
+  int i = 0;
+
+  while(i <= s.length() - n) {
+    int index = s.indexOf(target, i);
+
+    if(index >= 0) {
+      count++;
+    }
+
+    i = index + 1;
+  }
+
+  return count;
+}
+
+10)
+
+int compareTo(String s) {
+  int thisLength = this.length();
+  int sLength = slength();
+  int smallerLength = Math.min(thisLength, sLength);
+
+  for(int i = 0; i < smallerLength; i++) {
+    int difference = this.charAt(i) - s.charAt(j);
+
+    if(difference != 0) {
+      return difference;
+    }
+  }
+
+  return thisLength - sLength;
+}
+
