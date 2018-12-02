@@ -1,5 +1,7 @@
 package stringfunctions;
 
+import java.util.Arrays;
+
 public class StringFunctions {
   private static int count(String s, String target) {
     int count = 0;
@@ -113,5 +115,22 @@ public class StringFunctions {
     System.out.println(countWordIgnoreCase("caT dog cAt dog Cat", "cAt"));
     System.out.println("Reverse of \"abc\" = \"" + reverse("abc") + "\"");
     System.out.println("Reverse of \"\" = \"" + reverse("") + "\"");
+
+    System.out.println("\n");
+
+    Arrays.asList("This sentence has long gaps.".split("\\s+")).forEach(x -> System.out.println("\"" + x + "\""));
+    System.out.println();
+
+    Arrays.asList("What about punctuation?".split("\\s+")).forEach(x -> System.out.println("\"" + x + "\""));
+    System.out.println();
+
+    Arrays.asList("This is a sentence.".split("\\s")).forEach(x -> System.out.println("\"" + x + "\""));
+    System.out.println();
+
+    Arrays.asList("This is a sentence.".split("s")).forEach(x -> System.out.println("\"" + x + "\""));
+    System.out.println();
+
+    Arrays.asList("This is a sentence.".split("e")).forEach(x -> System.out.println("\"" + x + "\""));
+    System.out.println();
   }
 }

@@ -15,7 +15,11 @@ Button goButton = new Button("Go.");
 
 4) A String array (i.e. String[]) with the following data:
 
-{ "This", "sentence", "has", "long", "gaps." }
+a) { "This", "sentence", "has", "long", "gaps." }
+b) { "What", "about", "punctuation?" }
+c) { "This", "is", "a", "sentence." }
+d) { "Thi", " i", " a ", "entence." }
+e) { "This is a s", "nt", "nc", "." }
 
 
 5)
