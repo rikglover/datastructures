@@ -1,0 +1,102 @@
+1)
+
+Random gen = new Random();
+
+
+2)
+
+Thread t = new Thread();
+
+
+3)
+
+Button goButton = new Button("Go.");
+
+
+4) A String array (i.e. String[]) with the following data:
+
+{ "This", "sentence", "has", "long", "gaps." }
+
+
+5)
+
+private static String acronym(String phrase) {
+  StringBuilder result = new StringBuilder();
+
+  for(String token : phrase.split("\\s+")) {
+    result.append(token.toUpperCase().charAt(0));
+  }
+
+  return result.toString();
+}
+
+
+6)
+
+private static String acronym2(String phrase) {
+  StringBuilder result = new StringBuilder();
+  String[] words = phrase.split("\\s+");
+
+  for(int i = 0; i < words.length; i++) {
+    String token = words[i];
+    char firstCharacter = token.toUpperCase().charAt(0);
+
+    result.append(firstCharacter);
+  }
+
+  return result.toString();
+}
+
+7)
+
+private static int countWord(String s, String target) {
+  int count = 0;
+  String[] words = s.split("\\s+");
+
+  for(String word : words) {
+    if(word.equals(target)) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
+8)
+
+private static int countWordIgnoreCase(String s, String target) {
+  int count = 0;
+  String[] words = s.split("\\s+");
+
+  for(String word : words) {
+    if(word.equalsIgnoreCase(target)) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
+9)
+
+private static String reverse(String s) {
+  StringBuilder builder = new StringBuilder();
+
+  for(int i = s.length() - 1; i >= 0; i--) {
+    builder.append(s.charAt(i));
+  }
+
+  return builder.toString();
+}
+
+10)
+
+private static int linearSearch(String[] array, String target) {
+  for(int i = 0; i < array.length; i++) {
+    if(array[i].equals(target)) {
+      return i;
+    }
+  }
+
+  return -1;
+}

@@ -11,6 +11,16 @@ public class ArrayFunctions {
     return -1;
   }
 
+  private static int linearSearch(String[] array, String target) {
+    for(int i = 0; i < array.length; i++) {
+      if(array[i].equals(target)) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
   public static int sum(int[] data) {
     int sum = 0;
 
@@ -67,5 +77,11 @@ public class ArrayFunctions {
     System.out.println("\nSum of data: " + sum(data));
     System.out.println("\nMax of data: " + max(data));
     System.out.println("\nMin of data: " + min(data));
+
+    String[] arrays = { "cat", "dog", "frog", "banana" };
+
+    System.out.println();
+    System.out.println(linearSearch(arrays, "dog"));
+    System.out.println(linearSearch(arrays, "banana"));
   }
 }
