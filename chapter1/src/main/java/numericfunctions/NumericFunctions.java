@@ -26,7 +26,7 @@ public class NumericFunctions {
     return result;
   }
 
-  private static long gcd(long m, long n) {
+  public static long gcd(long m, long n) {
     while (n > 0) {
       long previousN = n;
 
