@@ -1,0 +1,104 @@
+1a) addOn()
+
+addOn(Fraction)
+
+1b) add()
+
+add(Fraction, Fraction)
+
+1c) toString()
+
+toString()
+
+1d) main()
+
+main(String[])
+
+
+2a) factorial() from 1.1
+
+factorial(int)
+
+2b) count() from 1.2
+
+count(String, String)
+
+2c) linearSearch() from 1.3
+
+linearSearch(int[], int)
+
+2d) acronym() from 1.4
+
+acronym(String)
+
+
+3) There are 2 reasons why they are static:
+
+  - Because main is declared static (and has to be static) any methods that main calls directly
+    must also be declared static.
+
+  - Because the semantics of each of those methods is such that they do not modify any instance
+    variables, and instead simply return a computed value, it is very natural to make them static.
+
+
+4) Yes it would because it has a different signature than the other addOn method and because you
+are allowed to overload a method regardless of whether or not different
+overloads for the same method are static and not.
+
+
+5a)
+
+Fraction f = new Fraction(5, 8);
+System.out.println("f = " + f);
+
+5b)
+
+Fraction g = new Fraction(17, 3);
+System.out.println("g = " + g);
+
+
+5c)
+
+Fraction h = Fraction.add(f, g);
+System.out.println("h = " + h);
+
+5d)
+
+Fraction j = new Fraction(5);
+System.out.println("j = " + j);
+
+5e)
+
+g.addOn(j);
+System.out.println("new g after adding on 5 = " + g);
+
+
+6a)
+
+public void subtractOff(Fraction f) {
+  num = num * f.den - den * f.num;
+  den *= f.den;
+}
+
+6b)
+
+public void multiplyBy(Fraction f) {
+  num *= f.num;
+  den *= f.den;
+}
+
+6c)
+
+public void divideBy(Fraction f) {
+  num *= f.den;
+  den *= f.num;
+}
+
+6d)
+
+public void addOn(int n) {
+  Fraction f = new Fraction(n);
+
+  addOn(f);
+}
+

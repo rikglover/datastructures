@@ -3,6 +3,7 @@ package stringfunctions;
 import java.util.Arrays;
 
 public class StringFunctions {
+
   private static int count(String s, String target) {
     int count = 0;
     int n = target.length();
