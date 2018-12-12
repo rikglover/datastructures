@@ -1,0 +1,78 @@
+1a) O(n)
+1b) O(n^2)
+1c) O(1)
+1d) O(n)
+1e) O(n^3)
+1f) O(n^2)
+1g) O(n^(3/2))
+
+
+2a) The loop iterates over each value from 1 to n, therefore it grows linearly with n, which makes
+it O(n).
+
+O(n)
+
+
+2b) The loop iterates over the body exactly 1000 times, which is a constant. Therefore it is O(1)
+
+O(1)
+
+
+2c) The loop iterates over n for each iteration over another loop, which iterates from 1 to n.
+The result is n*n, or n^2 iterations, which makes it O(n^2)
+
+O(n^2)
+
+
+2d) d is the same as c except for the fact that the inner loop starts at i rather than 0. However,
+this change in starting index becomes dwarfed by n as n approaches infinity, which makes it O(n^2).
+Stated another way, the n^2 is still the most significant factor of the function defining its
+performance. Therefore it is O(n^2).
+
+O(n^2)
+
+
+2e) The inner loop executes a fixed number of times. Therefore it is a O(1) operation. However, the
+outer loop is linear. The linear factor is the more dominant one, therefore, the algorithm is O(n).
+
+O(n)
+
+
+3) It means that the algorithm executes in constant time.
+
+4) Because array elements are located at fixed locations that can be calculated and the number  of
+instructions required to access an array location is fixed, the value stored at an array offset
+can be retrieved or set in a fixed amount of time, which is to say that it is O(1).
+
+5) The factorial method in figure 1.1 performs a calculation for each value from 1 to n.
+Therefore, as n grows the number of instructions required to perform the algorithm grows linearly.
+This makes it O(n).
+
+6) linearSearch
+
+Best case: O(1)
+Worst case: O(n)
+average case: O(n)
+
+
+7) sum (exercise 9, 1.3)
+
+Best case: O(n)
+Worst Case: O(n)
+Average Case: O(n)
+
+8) max (exercise 10, 1.3)
+
+Best case: O(n)
+Worst Case: O(n)
+Average Case: O(n)
+
+9) min (exercise 11, 1.3)
+
+Best case: O(n)
+Worst Case: O(n)
+Average Case: O(n)
+
+
+
+
