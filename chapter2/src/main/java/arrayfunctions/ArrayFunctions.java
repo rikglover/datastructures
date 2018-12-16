@@ -1,19 +1,16 @@
 package arrayfunctions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class ArrayFunctions {
+
   public static int linearSearch(int[] data, int target) {
-    for(int i = 0; i < data.length; i++) {
-      if(target == data[i]) {
+    for (int i = 0; i < data.length; i++) {
+      if (target == data[i]) {
         return i;
       }
     }
@@ -22,8 +19,8 @@ public class ArrayFunctions {
   }
 
   private static int linearSearch(String[] array, String target) {
-    for(int i = 0; i < array.length; i++) {
-      if(array[i].equals(target)) {
+    for (int i = 0; i < array.length; i++) {
+      if (array[i].equals(target)) {
         return i;
       }
     }
@@ -34,7 +31,7 @@ public class ArrayFunctions {
   public static int sum(int[] data) {
     int sum = 0;
 
-    for(int datum : data) {
+    for (int datum : data) {
       sum += datum;
     }
 
@@ -44,8 +41,8 @@ public class ArrayFunctions {
   public static int max(int[] data) {
     int max = data[0];
 
-    for(int i = 1; i < data.length; i++) {
-      if(data[i] > max) {
+    for (int i = 1; i < data.length; i++) {
+      if (data[i] > max) {
         max = data[i];
       }
     }
@@ -56,8 +53,8 @@ public class ArrayFunctions {
   public static int min(int[] data) {
     int min = data[0];
 
-    for(int i = 1; i < data.length; i++) {
-      if(data[i] < min) {
+    for (int i = 1; i < data.length; i++) {
+      if (data[i] < min) {
         min = data[i];
       }
     }
@@ -66,11 +63,11 @@ public class ArrayFunctions {
   }
 
   public static void insertionSort(int[] data) {
-    for(int i = 1; i < data.length; i++) {
+    for (int i = 1; i < data.length; i++) {
       int key = data[i];
       int j = i - 1;
 
-      while(j >= 0 && key < data[j]) {
+      while (j >= 0 && key < data[j]) {
         data[j + 1] = data[j];
         j -= 1;
       }
@@ -79,8 +76,27 @@ public class ArrayFunctions {
     }
   }
 
+  public static void selectionSort(int[] data) {
+    for(int i = 0; i < data.length - 1; i++) {
+      int nextSmallestIndex = i;
+
+      for(int j = i + 1; j < data.length; j++) {
+        if(data[j] < data[nextSmallestIndex]) {
+          nextSmallestIndex = j;
+        }
+      }
+
+      if(i != nextSmallestIndex) {
+        int temp = data[i];
+
+        data[i] = data[nextSmallestIndex];
+        data[nextSmallestIndex] = temp;
+      }
+    }
+  }
+
   public static void displayArray(int[] data) {
-    for(int datum : data) {
+    for (int datum : data) {
       System.out.print(datum + " ");
     }
 
@@ -90,7 +106,7 @@ public class ArrayFunctions {
   private static void randomFill(int[] data) {
     Random random = new Random();
 
-    for(int i = 0; i < data.length; i++) {
+    for (int i = 0; i < data.length; i++) {
       data[i] = random.nextInt();
     }
   }
@@ -98,14 +114,14 @@ public class ArrayFunctions {
   private static void randomFill(int[] data, int max) {
     Random random = new Random();
 
-    for(int i = 0; i < data.length; i++) {
+    for (int i = 0; i < data.length; i++) {
       data[i] = random.nextInt(max);
     }
   }
 
   private static boolean isSorted(int[] data) {
-    for(int i = 0; i < data.length - 1; i++) {
-      if(data[i] > data[i + 1]) {
+    for (int i = 0; i < data.length - 1; i++) {
+      if (data[i] > data[i + 1]) {
         return false;
       }
     }
@@ -145,14 +161,14 @@ public class ArrayFunctions {
       long time2 = System.currentTimeMillis();
       double timeDelta = time2 - time1;
 
-      if(!isSorted(data)) {
+      if (!isSorted(data)) {
         throw new IllegalStateException("Should be sorted");
       }
 
       sortTimes.put(arraySize, timeDelta);
 
       arraySize *= 2;
-    } while(arraySize < 200000);
+    } while (arraySize < 200000);
 
     sortTimes.entrySet().forEach(entry -> {
       System.out.println("ArraySize = " + entry.getKey() + " -- Time = " + entry.getValue());
@@ -164,18 +180,45 @@ public class ArrayFunctions {
     long sum = Arrays.stream(sumData).mapToLong(x -> x).sum();
     System.out.println("Sum = " + sum(sumData) + " actual Sum = " + sum);
 
-
     int[] maxData = new int[100];
 
     randomFill(maxData, 100);
-    long max = Arrays.stream(maxData).mapToLong(x -> x).max().orElseThrow(IllegalStateException::new);
+    long max = Arrays.stream(maxData).mapToLong(x -> x).max()
+        .orElseThrow(IllegalStateException::new);
     System.out.println("Max = " + max(maxData) + " actual max = " + max);
-
 
     int[] minData = new int[100];
 
     randomFill(minData, 100);
-    long min = Arrays.stream(minData).mapToLong(x -> x).min().orElseThrow(IllegalStateException::new);
+    long min = Arrays.stream(minData).mapToLong(x -> x).min()
+        .orElseThrow(IllegalStateException::new);
     System.out.println("min = " + min(minData) + " actual min = " + min);
+
+
+
+    int selectionSortArraySize = 100;
+
+    while (selectionSortArraySize < 200000) {
+
+      int[] selectionSortData = new int[selectionSortArraySize];
+
+      randomFill(selectionSortData);
+
+      System.out.println("ArraySize: " + selectionSortArraySize);
+      System.out.println("Starting out sorted: " + isSorted(selectionSortData));
+
+      long time1 = System.currentTimeMillis();
+      selectionSort(selectionSortData);
+      long time2 = System.currentTimeMillis();
+      long delta = time2 - time1;
+
+      if(!isSorted(selectionSortData)) {
+        throw new IllegalStateException("Array is not sorted");
+      }
+
+      System.out.println("done in " + delta + " milliseconds\n\n");
+
+      selectionSortArraySize *= 2;
+    }
   }
 }
