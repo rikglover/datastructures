@@ -1,0 +1,90 @@
+1) on whiteboard
+
+
+2a) Not appropriate because a stack is LIFO rather than "in any order".
+2b) Not appropriate because a stack is LIFO rather than FIFO.
+2c) This would be appropriate because this is LIFO, just like a stack.
+2d) Not appropriate because a stack is LIFO rather than FIFO.
+2e) Not appropriate because a stack is not optimized for shuffling or sorting.
+
+
+3) A class is the code that defines how an object is implemented.
+An interface defines a contract that a class that implements it must adhere to.
+
+
+4a)
+
+IntStack s;
+
+4b)
+
+s = new IntLinkedStack();
+
+4c)
+
+IntStack t = new IntArrayStack();
+
+
+5a)
+
+s.push(100);
+
+5b)
+
+System.out.println(s.pop());
+
+5c)
+
+System.out.println(s.peek());
+
+5d)
+
+while(!s.isEmpty()) {
+  System.out.println(s.pop());
+}
+
+
+6)
+
+public interface Runnable {
+  void run();
+}
+
+
+7)
+
+public interface Queue {
+  void enqueue(int);
+
+  int dequeue();
+}
+
+** INCORRECT **
+
+The parameter name is required for the definition of an interface. The signature of a method
+may not include the name of a parameter... just the type. But an interface definition still
+requires the parameter name... like this:
+
+public interface Queue {
+  void enqueue(int x);
+
+  int dequeue();
+}
+
+
+8a)
+
+Queue q1 = new ArrayQueue();
+
+8b)
+
+Queue q2 = new LinkedQueue();
+
+8c)
+
+q1.enqueue(19);
+
+8d)
+
+int result = q2.dequeue();
+
