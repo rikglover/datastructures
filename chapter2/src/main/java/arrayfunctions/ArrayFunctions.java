@@ -129,7 +129,27 @@ public class ArrayFunctions {
     return true;
   }
 
+  private static int binarySearch(int[] data, int target) {
+    int left = 0;
+    int right = data.length - 1;
+
+    while(left <= right) {
+      int mid = (left + right) / 2;
+
+      if(target < data[mid]) {
+        right = mid - 1;
+      } else if(target > data[mid]) {
+        left = mid + 1;
+      } else {
+        return mid;
+      }
+    }
+
+    return -1;
+  }
+
   public static void main(String[] args) {
+
     int[] data = new int[100];
 
     randomFill(data);
@@ -194,15 +214,18 @@ public class ArrayFunctions {
         .orElseThrow(IllegalStateException::new);
     System.out.println("min = " + min(minData) + " actual min = " + min);
 
-
+    Random random = new Random();
 
     int selectionSortArraySize = 100;
 
-    while (selectionSortArraySize < 200000) {
+    while (selectionSortArraySize < 20000000) {
 
       int[] selectionSortData = new int[selectionSortArraySize];
 
       randomFill(selectionSortData);
+
+      int randomIndex = random.nextInt(selectionSortArraySize - 1);
+      int randomTarget = selectionSortData[randomIndex];
 
       System.out.println("ArraySize: " + selectionSortArraySize);
       System.out.println("Starting out sorted: " + isSorted(selectionSortData));
@@ -211,14 +234,38 @@ public class ArrayFunctions {
       selectionSort(selectionSortData);
       long time2 = System.currentTimeMillis();
       long delta = time2 - time1;
+      int indexOfRandomTarget = binarySearch(selectionSortData, randomTarget);
 
       if(!isSorted(selectionSortData)) {
         throw new IllegalStateException("Array is not sorted");
+      }
+
+      if(selectionSortData[indexOfRandomTarget] != randomTarget) {
+        throw new IllegalStateException("Index found is not valid");
       }
 
       System.out.println("done in " + delta + " milliseconds\n\n");
 
       selectionSortArraySize *= 2;
     }
+
+
+    int[] lastData = new int[100];
+
+    randomFill(lastData);
+
+    int index = random.nextInt(100);
+    int target = lastData[index];
+
+    insertionSort(lastData);
+
+    int result = binarySearch(lastData, target);
+
+    if(lastData[result] != target) {
+      throw new IllegalStateException("Value not found");
+    }
+
+    System.out.println("Found " + target + " at index " + index);
   }
+
 }

@@ -1,0 +1,22 @@
+1) on whiteboard
+
+2) on whiteboard
+
+3) Because that is really just luck for the particular target and arrangement of data that happened
+to be chosen. Any other target chosen would have a different outcome, which is the more common
+circumstance.
+
+4) In the worst case, insertion sort followed by binary search is a O(n^2) operation. Linear search,
+however, is only O(n). Therefore, linear search is faster in the worst case.
+
+5) See main
+
+6) see m,ain
+
+7) The algorithm is just slightly slower because it is testing cells that should be ruled out
+earlier.
+
+** INCORRECT **
+
+As initially thought before actually testing it, the algorithm will not work. The reason I thought
+it would work is because when I tried it it seemed to work. However, this was just luck.
