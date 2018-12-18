@@ -1,0 +1,181 @@
+1)
+
+IntStack s = new IntArrayStack();
+
+s.push(10);
+s.push(20);
+s.push(30);
+s.push(40);
+
+
+2)
+
+IntStack operands = new IntArrayStack();
+
+operands.push(17);
+operands.push(0);
+operands.push(-12);
+operands.push(101);
+
+
+3a) The starting value of top is -1 because the top variable represents the CURRENT top and when
+the stack is initially constructed, there is no data in it. Before an item is pushed onto the stack
+the value of top will be incremented. Therefore, by making the intial value of top -1 the index
+of the first item pushed onto the stack will be 0.
+
+** Required Refinement **
+
+The last sentence needed to be modified to be truly correct.
+
+
+3b) A final variable is one who's value can only be set 1 time. A static variable on a class is a
+class variable that exists across all instances of the class. In java, making a variable both final
+and static is the conventional way of defining what other languages call a "constant". Since the
+DEFAULT_CAPACITY is shared across all instances of the class and it will never change it is
+appropriate for it to be considered a constant.
+
+3c) By using the prefix operator, ++top, the way that they are on line 14 the code will increment
+the variable top before evaluating it. Therefore, the statement on line 14 will increment top and
+then set the array location data[top] to the new value.
+
+3d) By using the postfix operator, top--, the way that they are on line 19, the code will evaluate
+the line data[top] as if there was no postfix operator (meaning it will return data[top] as the
+value of the function) and then secondarily decrement the value of top as well.
+
+3e) The isEmpty() method checks for top being equal to -1. Without this check on line 18, the attempt
+to access the array location at -1 would result in an ArrayIndexOutOfBoundsException because it is
+not legal to access an error below the value of 0 or above the value of it's length - 1.
+
+
+4) s.size() will return the number of elements currently stored in the stack. s.data.length will
+return the maximum number of elements that CAN be stored in the stack without resizing.
+
+
+5)
+
+top = 4
+
+0   1   2   3   4
+______________________________________
+0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+
+
+6) on the whiteboard
+
+** Mistake using prefix operator for push as well as using super instead of this **
+
+Also, EMPTY_INDEX probably shouldn't be a constant.
+
+
+7)
+
+public void push(int item) {
+  if(size() == data.length) {
+    resize(RESIZE_FACTOR * data.length);
+  }
+
+  top += 1;
+  data[top] = item;
+}
+
+// I don't believe there is much of a trade off here. I believe the above is easier to read and
+// less likely to be misunderstood than using the prefix operator.
+
+public int pop() {
+  if(isEmpty()) {
+    throw new EmptyStackException();
+  }
+
+  int returnValue = data[top];
+
+  top -= 1;
+
+  return returnValue;
+}
+
+// I would generally argue against using the prefix and postfix arguments in such a way that you
+// are relying upon the pre and post fix part of their behavior. It just creates opportunities for
+// error. Therefore, despite its verbosity, the above is best.
+
+
+8)
+
+public static void main(String[] args) {
+    IntStack s = new IntArrayStack();
+
+    System.out.println("Starts out empty: " + s.isEmpty());
+    System.out.println("Size: " + s.size());
+
+    for(int i = 0; i < 5; i++) {
+      s.push(i);
+    }
+
+    System.out.println("Ends up not empty: " + !s.isEmpty());
+    System.out.println("Size: " + s.size());
+
+    while(!s.isEmpty()) {
+      System.out.println(s.pop());
+    }
+
+    for(int i = 0; i < 1000; i++) {
+      s.push(i);
+    }
+
+    while(!s.isEmpty()) {
+      s.pop();
+    }
+
+    System.out.println("Done!!!");
+  }
+}
+
+9a) The number of steps required to execute isEmpty does not vary with the size of the stack.
+It is just a calculation that always requires the same steps. Therefore, it is O(1).
+
+9b) The number of steps required to execute peek does not vary with the size of the stack.
+    It is just a calculation that always requires the same steps. Therefore, it is O(1).
+
+9c) The number of steps required to execute pop does not vary with the size of the stack.
+    It always requires the same steps (unless it is empty). Therefore, it is O(1).
+
+9d) The number of steps required to execute push does not vary with the size of the stack.
+    It always requires the same steps. Therefore, it is O(1).
+
+9e) The number of steps required to execute size() does not vary with the size of the stack.
+    It is just a calculation that always requires the same steps. Therefore, it is O(1).
+
+
+10)
+
+public IntArrayStack() {
+  this(DEFAULT_CAPACITY);
+}
+
+public IntArrayStack(int capacity) {
+  data = new int[capacity];
+}
+
+
+11)
+
+@Override
+public int pop() {
+  if(isEmpty()) {
+    throw new EmptyStackException();
+  }
+
+  if(size() <= data.length / DOWNSIZE_FACTOR) {
+    int newCapacity = data.length / RESIZE_FACTOR;
+
+    if(newCapacity < DEFAULT_CAPACITY) {
+      newCapacity = DEFAULT_CAPACITY;
+    }
+
+    resize(newCapacity);
+  }
+
+  return data[top--];
+}
+
+12)
+
