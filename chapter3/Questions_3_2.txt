@@ -129,20 +129,15 @@ public static void main(String[] args) {
   }
 }
 
-9a) The number of steps required to execute isEmpty does not vary with the size of the stack.
-It is just a calculation that always requires the same steps. Therefore, it is O(1).
+9a) isEmpty simply compares either the size() with 0 or the top with -1. This is one step.
 
-9b) The number of steps required to execute peek does not vary with the size of the stack.
-    It is just a calculation that always requires the same steps. Therefore, it is O(1).
+9b) peek simply returns the top item from the stack, which is just 1 step.
 
-9c) The number of steps required to execute pop does not vary with the size of the stack.
-    It always requires the same steps (unless it is empty). Therefore, it is O(1).
+9c) pop returns the top item from the stack and changes the top index. This is 2 steps.
 
-9d) The number of steps required to execute push does not vary with the size of the stack.
-    It always requires the same steps. Therefore, it is O(1).
+9d) pushing increments the top index and adds an item to the array. This is 2 steps.
 
-9e) The number of steps required to execute size() does not vary with the size of the stack.
-    It is just a calculation that always requires the same steps. Therefore, it is O(1).
+9e) This simply performs a calculation that requires 1 step.
 
 
 10)
@@ -164,14 +159,14 @@ public int pop() {
     throw new EmptyStackException();
   }
 
-  if(size() <= data.length / DOWNSIZE_FACTOR) {
-    int newCapacity = data.length / RESIZE_FACTOR;
+  if(data.length > DEFAULT_CAPACITY && size() <= data.length / DOWNSIZE_FACTOR) {
+    int newCapacity = DEFAULT_CAPACITY;
 
     if(newCapacity < DEFAULT_CAPACITY) {
       newCapacity = DEFAULT_CAPACITY;
     }
 
-    resize(newCapacity);
+    resize(data.length / RESIZE_FACTOR);
   }
 
   return data[top--];

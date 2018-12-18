@@ -44,7 +44,7 @@ public class IntArrayStack implements IntStack {
       throw new EmptyStackException();
     }
 
-    if(size() <= data.length / DOWNSIZE_FACTOR) {
+    if(data.length > DEFAULT_CAPACITY && size() <= data.length / DOWNSIZE_FACTOR) {
       int newCapacity = data.length / RESIZE_FACTOR;
 
       if(newCapacity < DEFAULT_CAPACITY) {
