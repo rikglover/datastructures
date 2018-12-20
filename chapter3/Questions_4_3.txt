@@ -1,0 +1,58 @@
+1) No. The questions from exercise 1 only reference the interface of the IntStack. Therefore,
+the implementation details are not relevant.
+
+2) On whiteboard.
+
+3) On whiteboard.
+
+4)
+
+Node head = new Node(18, null);
+
+head = new Node(4, head);
+head = new Node(7, head);
+
+5a) Will not generate an NPE because p points to a node.
+5b) Will not generate an NPE because p.next points to null, which is valid.
+5c) Will generate an NPE because p.next points to null, which means that when you try to dereference
+it with p.next.next you will get an NPE.
+
+6)
+
+See IntLinkedStack
+
+Drawing on whiteboard.
+
+7) Without the check for isEmpty(), the call to pop on an empty stack would result in an NPE because
+top is null. Therefore, there can be no call to top.next.
+
+8) See IntLinkedStack
+
+9) See IntLinkedStack
+
+10) See IntLinkedStack
+
+11) A constructor with a capacity parameter wouldn't make sense on the IntLinkedStack class because
+the linked list implementation allocates everything dynamically, as elements are pushed. When
+elements are popped they are reclaimed by the garbage collector when the garbage collector deems
+it appropriate to do so.
+
+12a) isEmpty() is O(1) because the check for size == 0 can be done in 1 step.
+
+12b) peek() is is O(1) because only 1 step is required to check if empty and 1 step is required to
+return the data element of the top node. (2 steps total)
+
+12c) pop() is O(1) because a fixed number of steps (5) is required to check for empty, get the value
+of the node at the top, change the head pointer to the next node, decrement size and return the
+value of the previous top node.
+
+12d) push() is O(1) because a fixed number of steps (2) is required to make the head point to a new
+node with its next field pointing to the current top, and then to increment size.
+
+12e) size() is O(1) if there is a size variable because all that is necessary is to just return the
+value of the size variable, which is only 1 instruction. However, if there is no size variable then
+the operation is O(n) because you have to traverse the linked list in order to count the number of
+nodes in the linked list.
+
+** 12 had some slight modifications. The exact number of steps really depends on **
+** what implementation exactly you are analyzing **
