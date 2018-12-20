@@ -1,0 +1,75 @@
+1)
+
+public interface Queue<E> {
+  void enqueue(E item);
+  E dequeue();
+}
+
+
+2)
+
+Queue<String> q = new ArrayQueue<>();
+
+
+3)
+
+public interface Map<K, V> {
+  void put(K key, V value);
+  V get(K key);
+}
+
+
+4)
+
+Map<String, Integer> m = new LinkedMap<>();
+
+
+5)
+
+public interface Stack<E> {
+  boolean isEmpty();
+  E peek();
+  E pop();
+  void push(E item);
+  int size();
+}
+
+
+6a)
+
+Stack<String> operators = new ArrayStack<>();
+
+6b)
+
+Stack<Integer> operands = new ArrayStack<>();
+
+6c)
+
+Stack<Integer> s = new ArrayStack<>();
+
+for(int i = 0; i < 10; i++) {
+  s.push(i);
+}
+
+
+7)
+
+Yes, when the call to s.push(i) is made i, which is an int, will be boxed to an Integer.
+
+
+8a)
+
+Node<Integer> p = new Node<>(34, null);
+
+8b)
+
+Node<String> q = new Node<>("Java", null);
+
+8c)
+
+Node<Double> head = new Node<>(0.58, null);
+
+head = new Node<>(2.72, head);
+head = new Node<>(3.14, head);
+
+
