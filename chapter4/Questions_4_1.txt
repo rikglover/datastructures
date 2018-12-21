@@ -37,15 +37,15 @@ public interface Stack<E> {
 
 6a)
 
-Stack<String> operators = new ArrayStack<>();
+Stack<String> operators = new arraystack.ArrayStack<>();
 
 6b)
 
-Stack<Integer> operands = new ArrayStack<>();
+Stack<Integer> operands = new arraystack.ArrayStack<>();
 
 6c)
 
-Stack<Integer> s = new ArrayStack<>();
+Stack<Integer> s = new arraystack.ArrayStack<>();
 
 for(int i = 0; i < 10; i++) {
   s.push(i);

@@ -1,0 +1,331 @@
+1a)
+
+  @Override
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+1b)
+
+  @Override
+  public E peek() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    return top.getData();
+  }
+
+1c)
+
+  @Override
+  public E pop() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    E data = top.getData();
+
+    top = top.getNext();
+    size -= 1;
+
+    return data;
+  }
+
+1d)
+
+  @Override
+  public void push(E item) {
+    top = new Node<>(item, top);
+    size += 1;
+  }
+
+1e)
+
+  @Override
+  public int size() {
+    return size;
+  }
+
+
+2a)
+
+    Stack<Integer> integerStack = new LinkedStack<>();
+
+    integerStack.push(1);
+    integerStack.push(2);
+    integerStack.push(3);
+
+    System.out.println("Size: " + integerStack.size());
+
+    while(!integerStack.isEmpty()) {
+      int peekItem = integerStack.peek();
+
+      if(peekItem != integerStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+2b)
+
+    Stack<Double> doubleStack = new LinkedStack<>();
+
+    doubleStack.push(1.0);
+    doubleStack.push(2.0);
+    doubleStack.push(3.0);
+
+    System.out.println("Size: " + doubleStack.size());
+
+    while(!doubleStack.isEmpty()) {
+      double peekItem = doubleStack.peek();
+
+      if(peekItem != doubleStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+ 2c)
+
+    Stack<String> stringStack = new LinkedStack<>();
+
+    stringStack.push("Hello ");
+    stringStack.push("World");
+    stringStack.push("!!!");
+
+    System.out.println("Size: " + stringStack.size());
+
+    while(!stringStack.isEmpty()) {
+      String peekItem = stringStack.peek();
+
+      if(!peekItem.equals(stringStack.pop())) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+
+3a) isEmpty() requires 1 step to compare the size instance variable with 0, which is O(1)
+
+3b) peek() requires 1 step to check for an empty stack, plus 1 step to return the data attribute
+of the top node, for a total of 2 steps. Therefore, it is O(1)
+
+3c) pop() requires 1 step to check for an empty stack, 1 step to save off the data item from
+the top, 1 step to move the top to top.next, 1 step to decrement the size and 1 step to return the
+data that was saved off. This is 5 total steps, which is O(1)
+
+3d) push() requires 2 steps, 1 to set the top to a new node and 1 to increment the size. This is O(1)
+
+3e) size() requires 1 step to return the value of the size instance variable. This is O(1)
+
+
+4a)
+
+@Override
+public boolean isEmpty() {
+  return top == EMPTY_INDEX;
+}
+
+4b)
+
+  @Override
+  public E peek() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    return data[top];
+  }
+
+4c)
+
+  @Override
+  public void push(E item) {
+    if(size() == data.length) {
+      resize(RESIZE_FACTOR * data.length);
+    }
+
+    top += 1;
+    data[top] = item;
+  }
+
+4d)
+
+  @Override
+  public int size() {
+    return top + 1;
+  }
+
+4e)
+
+  private void resize(int newCapacity) {
+    if(newCapacity <= size()) {
+      throw new IllegalArgumentException("newCapacity cannot be smaller that current size");
+    }
+
+    E[] newData = allocateData(newCapacity);
+
+    System.arraycopy(data, 0, newData, 0, size());
+
+    data = newData;
+  }
+
+4f)
+
+  public ArrayStack() {
+    this(DEFAULT_CAPACITY);
+  }
+
+  public ArrayStack(int capacity) {
+    data = allocateData(capacity);
+  }
+
+4g)
+
+  @Override
+  public E pop() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    E item = data[top];
+
+    top -= 1;
+
+    return item;
+  }
+
+** INCORRECT IN SO FAR AS IT DOES NOT SET REMOVED ITEMS TO NULL LIKE HIS CODE DOES **
+
+** SHOULD BE LIKE THIS **
+
+  @Override
+  public E pop() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    E item = data[top];
+
+    data[top] = null;
+    top -= 1;
+
+    return item;
+  }
+
+4h)
+
+  @Override
+  public E pop() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    if(size() < data.length / DOWNSIZE_FACTOR) {
+      resize(data.length / RESIZE_FACTOR);
+    }
+
+    E item = data[top];
+
+    top -= 1;
+
+    return item;
+  }
+
+
+** INCORRECT IN SO FAR AS IT DOES NOT SET REMOVED ITEMS TO NULL LIKE HIS CODE DOES **
+** ALSO, THE DOWNSIZE SHOULD BE BELOW THE POPPING CODE ITSELF **
+** ALSO, SHOULD NOT RESIZE BELOW DEFAULT_CAPACITY **
+
+** SHOULD BE LIKE THIS **
+
+  @Override
+  public E pop() {
+    if(isEmpty()) {
+      throw new EmptyStackException();
+    }
+
+    E item = data[top];
+
+    data[top] = null;
+    top -= 1;
+
+    if(data.length > DEFAULT_CAPACITY && size() < data.length / DOWNSIZE_FACTOR) {
+      resize(data.length / RESIZE_FACTOR);
+    }
+
+    return item;
+  }
+
+
+5a)
+
+   Stack<Integer> integerStack = new ArrayStack<>();
+
+    integerStack.push(1);
+    integerStack.push(2);
+    integerStack.push(3);
+
+    System.out.println("Size: " + integerStack.size());
+
+    while(!integerStack.isEmpty()) {
+      int peekItem = integerStack.peek();
+
+      if(peekItem != integerStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+5b)
+
+    Stack<Double> doubleStack = new ArrayStack<>();
+
+    doubleStack.push(1.0);
+    doubleStack.push(2.0);
+    doubleStack.push(3.0);
+
+    System.out.println("Size: " + doubleStack.size());
+
+    while(!doubleStack.isEmpty()) {
+      double peekItem = doubleStack.peek();
+
+      if(peekItem != doubleStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+ 5c)
+
+    Stack<String> stringStack = new ArrayStack<>();
+
+    stringStack.push("Hello ");
+    stringStack.push("World");
+    stringStack.push("!!!");
+
+    System.out.println("Size: " + stringStack.size());
+
+    while(!stringStack.isEmpty()) {
+      String peekItem = stringStack.peek();
+
+      if(!peekItem.equals(stringStack.pop())) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+
+ 6a) isEmpty() requires 1 step to compare the value of top to the empty index (-1). This is a
+ fixed number of steps and therefore O(1)
+
+ 6b) peek() requires 1 step to check for an empty stack and 1 step to return the item at the
+ top of the data array, for a total of 2 steps. This is a fixed number of steps and therefore O(1)
+
+ 6c) pop() requires 1 step to check for an empty stack, 1 step to check for the need to
+ resize the array, 1 step to save off the top item from the data array, 1 step to decrement
+ the size attribute and 1 step to return the item. This is 5 total steps, which is a fixed number
+ of steps and therefore O(1).
+
+ 6d) push() requires 1 step to check for the need to resize, 1 step to increment the
+ top index, and one step to add the new item to the top of the data array. This is 3 steps, which
+ is a fixed number, and therefore O(1)
+
+ 6e) size() requires 1 step to return the top index + 1. This a fixed number of steps and
+ therefore O(1)
+
