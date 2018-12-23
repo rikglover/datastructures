@@ -1,5 +1,6 @@
 package stack;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 public class ArrayStack<E> implements Stack<E> {
@@ -100,7 +101,6 @@ public class ArrayStack<E> implements Stack<E> {
         throw new IllegalStateException("Peek value should be equal to pop value");
       }
     }
-
 
     Stack<Double> doubleStack = new ArrayStack<>();
 

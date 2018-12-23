@@ -1,0 +1,336 @@
+1)
+
+Precedence:
+
+++ as postfix has the highest precendence, followed by ++ as prefix.
+Next is <, followed by == followed by &&
+
+Associativity. All binary operators, except for the assignment operator, are left associative.
+
+The associativity of unary operators is not explicitly defined in the java language specification
+or the java tutorial.
+
+2a) * + / - a b c d e
+
+Infix
+-----
+
+* + / (a - b) c d e
+* + ((a - b) / c) d e
+* (((a - b) / c) + d) e
+(((a - b) / c) + d) * e
+
+((a - b) / c + d) * e      <-- Rik's Answer
+
+
+Postfix
+-------
+
+(((a - b) / c) + d) e *
+((a - b) / c) d + e *
+(a - b) c / d + e *
+a b - c / d + e *          <-- RIK'S ANSWER
+
+
+2b) / - a b * + c d e
+
+
+Infix
+-----
+
+/ - a b * (c + d) e
+/ - a b ((c + d) * e)
+/ (a - b) ((c + d) * e)
+(a - b) / ((c + d) * e)
+
+(a - b) / ((c + d) * e)    <--- Rik's Answer
+
+
+Postfix
+-------
+
+(a - b) ((c + d) * e) /
+(a - b) ((c d +) * e) /
+(a - b) ((c d +) e *) /
+(a b -) ((c d +) e *) /
+a b - c d + e * /          <--- Rik's Answer
+
+
+
+2c) + - a * b c / d e
+
+
+Infix
+-----
+
++ - a * b c (d / e)
++ - a (b * c) (d / e)
++ (a - (b * c)) (d / e)
+(a - (b * c)) + (d / e)
+
+a - b * c + d / e           <--- Rik's Answer
+
+
+Postfix
+-------
+
+a - b * c + d e /
+a - b c * + d e /
+a - b c * d e / +
+a b c * d e / + -
+
+a b c * d e / + -          <--- Rik's Answer      ** INCORRECT **
+
+
+(a - (b * c)) + (d / e)
+(a - b c *) + (d e /)
+(a b c * -) + (d e /)
+(a b c * -) (d e /) +
+a b c * - d e / +
+
+a b c * - d e / +          <---- Rik's Answer
+
+2d) - a / b * c + d e
+
+
+Infix
+-----
+
+- a / b * c (d + e)
+- a / b (c * (d + e))
+- a (b / (c * (d + e)))
+a - (b / (c * (d + e)))
+
+a - b / (c * (d + e))        <---- Rik's Answer
+
+
+Postfix
+-------
+
+a - (b / (c * (d + e)))
+a - (b / (c * (d e +)))
+a - (b / (c d e + *))
+a - (b (c d e + *) /)
+a - b c d e + * /
+a b c d e + * / -           <--- Rik's Answer
+
+
+Checking my work
+----------------
+
+a b c (d + e) * / -
+a b (c * (d + e)) / -
+a (b / (c * (d + e))) -
+a - (b / (c * (d + e)))
+
+a - b / (c * (d + e))
+
+
+3a) a b c d e * + / -
+
+
+Infix
+-----
+
+a b c (d * e) + / -
+a b (c + (d * e)) / -
+a (b / (c + (d * e))) -
+a - (b / (c + (d * e)))
+
+a - b / (c + (d * e))
+
+
+Prefix
+------
+
+a - b / (c + (d * e))
+a - b / (c + * d e)
+a - b / + c * d e
+a - / b + c * d e
+- a / b + c * d e
+
+
+- a / b + c * d e         <--- Rik's Answer
+
+
+3b) a b * c + d e / -
+
+
+Infix
+-----
+
+(a * b) c + d e / -
+((a * b) + c) (d / e) -
+((a * b) + c) - (d / e)
+
+a * b + c - d / e       <-- Rik's Answer
+
+
+Prefix
+-------
+
+(a * b + c) - / d e
+- (a * b + c) / d e
+- (a * + b c) / d e
+- (+ a + b c *) / d e
+
+- + a + b c * / d e       <-- Rik's Answer       ** INCORRECT **
+
+
+((a * b) + c) - (d / e)
+((a * b) + c) - (/ d e)
+((* a b) + c) - (/ d e)
+(+ (* a b) c) - (/ d e)
+- (+ (* a b) c) (/ d e)
+
+- + * a b c / d e         <-- Rik's New Answer
+
+
+3c) a b c + / d e - f / -
+
+
+Infix
+-----
+
+a (b + c) / d e - f / -
+(a / (b + c)) d e - f / -
+(a / (b + c)) (d - e) f / -
+(a / (b + c)) ((d - e) / f) -
+(a / (b + c)) - ((d - e) / f)
+
+a / (b + c) - (d - e) / f     <-- Rik's Answer
+
+
+Prefix
+------
+
+- (a / (b + c)) ((d - e) / f)
+- (/ a (b + c)) ((- d e) / f)
+- (/ a (+ b c)) (/ (- d e) f)
+
+- / a + b c / - d e f          <--- Rik's Answer
+
+
+3d) a b + c / d - e * f +
+
+Infix
+-----
+
+(a + b) c / d - e * f +
+((a + b) / c) d - e * f +
+(((a + b) / c) - d) e * f +
+((((a + b) / c) - d) * e) f +
+((((a + b) / c) - d) * e) + f
+
+((a + b) / c - d) * e + f     <--- Rik's Answer
+
+Prefix
+------
+
+((((a + b) / c) - d) * e) + f
+((((+ a b) / c) - d) * e) + f
+(((/ (+ a b) c) - d) * e) + f
+((- (/ (+ a b) c) d) * e) + f
+(* (- (/ (+ a b) c) d) e) + f
++ (* (- (/ (+ a b) c) d) e) f
+
++ * - / + a b c d e f          <--- Rik's Answer
+
+
++ * - / (a + b) c d e f
++ * - ((a + b) / c) d e f
++ * (((a + b) / c) - d) e f
++ ((((a + b) / c) - d) * e) f
+((((a + b) / c) - d) * e) + f
+
+
+4) In order to produce a consistent answer it is necessary to define an algorithm. Since we are
+not using 4.5 as indicated by the instructions there are many possible answers.
+
+4a)
+
+Prefix
+------
+
+x + y + z * w - v / u
+x + y + (* z w) - (/ v u)
+- (x + y + (* z w)) (/ v u)
+- (+ x (y + (* z w)) (/ v u)
+- (+ x (+ y (* z w)) (/ v u)
+- + x + y * z w / v u
+
+- + x + y * z w / v u          <-- Rik's Answer
+
+- + x + y * z w (v / u)
+- + x + y (z * w) (v / u)
+- + x (y + (z * w)) (v / u)
+- (x + (y + (z * w)) (v / u)
+x + y + (z * w) - (v / u)
+
+
+Postfix
+-------
+
+x + y + z * w - v / u
+x + y + z * w - (v u /)
+(x + y + z * w) (v u /) -
+(x + y + (z w *)) (v u /) -
+(x + y + (z w *)) (v u /) -
+(x + (y (z w *)) +) (v u /) -
+(x (y (z w *)) +) +) (v u /) -
+
+x y z w * + + v u / -           <-- Rik's answer
+
+x y (z * w) + + (v / u) -
+x (y + (z * w)) + (v / u) -
+(x + (y + (z * w))) (v / u) -
+(x + (y + (z * w))) - (v / u)
+
+x + y + (z * w) - (v / u)
+
+
+5a)
+
++ 3 * / 4 2 - 6 1
++ 3 * / 4 2 5
++ 3 * 2 5
++ 3 10
+13
+
+13                  <--- Rik's Answer
+
+
+5b)
+
+/ - * + 1 3 5 6 2
+/ - * 4 5 6 2
+/ - 20 6 2
+/ 14 2
+7
+
+7                   <--- Rik's Answer
+
+
+5c)
+
+- 4 / + 1 * 3 2 7
+- 4 / + 1 6 7
+- 4 / 7 7
+- 4 1
+3
+
+3                   <-- Rik's Answer
+
+
+5d)
+
+* + 5 1 * - 4 2 / 9 3
+* + 5 1 * - 4 2 3
+* + 5 1 * 2 3
+* + 5 1 6
+* 6 6
+36
+
+36                  <-- Rik's Answer
+
+
