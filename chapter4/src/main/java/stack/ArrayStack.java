@@ -1,9 +1,9 @@
 package stack;
 
-import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 public class ArrayStack<E> implements Stack<E> {
+
   private static final int DEFAULT_CAPACITY = 10;
   private static final int EMPTY_INDEX = -1;
   private static final int RESIZE_FACTOR = 2;
@@ -33,7 +33,7 @@ public class ArrayStack<E> implements Stack<E> {
 
   @Override
   public void push(E item) {
-    if(size() == data.length) {
+    if (size() == data.length) {
       resize(RESIZE_FACTOR * data.length);
     }
 
@@ -43,7 +43,7 @@ public class ArrayStack<E> implements Stack<E> {
 
   @Override
   public E pop() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
 
@@ -52,7 +52,7 @@ public class ArrayStack<E> implements Stack<E> {
     data[top] = null;
     top -= 1;
 
-    if(data.length > DEFAULT_CAPACITY && size() < data.length / DOWNSIZE_FACTOR) {
+    if (data.length > DEFAULT_CAPACITY && size() < data.length / DOWNSIZE_FACTOR) {
       resize(data.length / RESIZE_FACTOR);
     }
 
@@ -61,7 +61,7 @@ public class ArrayStack<E> implements Stack<E> {
 
   @Override
   public E peek() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
 
@@ -74,7 +74,7 @@ public class ArrayStack<E> implements Stack<E> {
   }
 
   private void resize(int newCapacity) {
-    if(newCapacity <= size()) {
+    if (newCapacity <= size()) {
       throw new IllegalArgumentException("newCapacity cannot be smaller that current size");
     }
 
@@ -94,10 +94,10 @@ public class ArrayStack<E> implements Stack<E> {
 
     System.out.println("Size: " + integerStack.size());
 
-    while(!integerStack.isEmpty()) {
+    while (!integerStack.isEmpty()) {
       int peekItem = integerStack.peek();
 
-      if(peekItem != integerStack.pop()) {
+      if (peekItem != integerStack.pop()) {
         throw new IllegalStateException("Peek value should be equal to pop value");
       }
     }
@@ -110,14 +110,13 @@ public class ArrayStack<E> implements Stack<E> {
 
     System.out.println("Size: " + doubleStack.size());
 
-    while(!doubleStack.isEmpty()) {
+    while (!doubleStack.isEmpty()) {
       double peekItem = doubleStack.peek();
 
-      if(peekItem != doubleStack.pop()) {
+      if (peekItem != doubleStack.pop()) {
         throw new IllegalStateException("Peek value should be equal to pop value");
       }
     }
-
 
     Stack<String> stringStack = new ArrayStack<>();
 
@@ -127,10 +126,10 @@ public class ArrayStack<E> implements Stack<E> {
 
     System.out.println("Size: " + stringStack.size());
 
-    while(!stringStack.isEmpty()) {
+    while (!stringStack.isEmpty()) {
       String peekItem = stringStack.peek();
 
-      if(!peekItem.equals(stringStack.pop())) {
+      if (!peekItem.equals(stringStack.pop())) {
         throw new IllegalStateException("Peek value should be equal to pop value");
       }
     }
