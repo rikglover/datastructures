@@ -14,35 +14,6 @@ public class ExpressionEvaluator {
 
   private static final String SPACE = " ";
 
-  private static String performOperation(String operand1, String operand2, Operator operator) {
-    int operandValue1 = Integer.parseInt(operand1);
-    int operandValue2 = Integer.parseInt(operand2);
-    int result;
-
-    switch (operator) {
-      case MULTIPLICATION:
-        result = operandValue1 * operandValue2;
-        break;
-
-      case DIVISION:
-        result = operandValue1 / operandValue2;
-        break;
-
-      case ADDITION:
-        result = operandValue1 + operandValue2;
-        break;
-
-      case SUBTRACTION:
-        result = operandValue1 - operandValue2;
-        break;
-
-      default:
-        throw new RuntimeException("Unknown operator");
-    }
-
-    return String.valueOf(result);
-  }
-
   public static String evaluatePostfix(String expression) {
     String[] terms = expression.split("\\s+");
 
@@ -69,6 +40,12 @@ public class ExpressionEvaluator {
     return stack.pop();
   }
 
+  public static String evaluateInfix(String infixExpression) {
+    String postfixExpression = convertInfixToPostfix(infixExpression);
+
+    return evaluatePostfix(postfixExpression);
+  }
+
   public static String convertInfixToPostfix(String expression) {
     String[] terms = expression.split("\\s+");
 
@@ -92,7 +69,7 @@ public class ExpressionEvaluator {
       }
     }
 
-    while(!stack.isEmpty()) {
+    while (!stack.isEmpty()) {
       String stackTerm = stack.pop().getSymbol();
 
       output.add(stackTerm);
@@ -101,13 +78,55 @@ public class ExpressionEvaluator {
     return output.toString();
   }
 
+  public static void main(String[] args) {
+    String infixExpression = "a / b / c + d * e * f";
+    String postfixExpression = convertInfixToPostfix(infixExpression);
+
+    System.out.println("Infix: " + infixExpression);
+    System.out.println("Postfix: " + postfixExpression);
+  }
+
+  private static String performOperation(String operand1, String operand2, Operator operator) {
+    int operandValue1 = Integer.parseInt(operand1);
+    int operandValue2 = Integer.parseInt(operand2);
+    int result;
+
+    switch (operator) {
+      case EXPONENTIATION:
+        result = (int) Math.pow(operandValue1, operandValue2);
+        break;
+
+      case MULTIPLICATION:
+        result = operandValue1 * operandValue2;
+        break;
+
+      case DIVISION:
+        result = operandValue1 / operandValue2;
+        break;
+
+      case ADDITION:
+        result = operandValue1 + operandValue2;
+        break;
+
+      case SUBTRACTION:
+        result = operandValue1 - operandValue2;
+        break;
+
+      default:
+        throw new RuntimeException("Unknown operator");
+    }
+
+    return String.valueOf(result);
+  }
+
   @Getter
   @AllArgsConstructor
   private enum Operator {
     ADDITION("+", 0),
     SUBTRACTION("-", 0),
     MULTIPLICATION("*", 1),
-    DIVISION("/", 1);
+    DIVISION("/", 1),
+    EXPONENTIATION("^", 2);
 
     private static final Map<String, Operator> OPERATOR_MAP =
         Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));

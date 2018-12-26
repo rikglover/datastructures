@@ -1,0 +1,187 @@
+1) In each case, the intent is for you to fall through to the next case statement or to return a
+particular value immediately. So there's no need for any breaks.
+
+2)
+
+@Getter
+@AllArgsConstructor
+private enum Operator {
+  ADDITION("+", 0),
+  SUBTRACTION("-", 0),
+  MULTIPLICATION("*", 1),
+  DIVISION("/", 1),
+  EXPONENTIATION("^", 2);
+
+  private static final Map<String, Operator> OPERATOR_MAP =
+      Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));
+
+  private final String symbol;
+  private final int rank;
+
+  public static Operator fromSymbol(String symbol) {
+    if (!isOperator(symbol)) {
+      throw new IllegalArgumentException("Invalid operator");
+    }
+
+    return OPERATOR_MAP.get(symbol);
+  }
+
+  public static boolean isOperator(String input) {
+    return OPERATOR_MAP.containsKey(input);
+  }
+}
+
+3)
+
+public static void main(String[] args) {
+  String infixExpression = "a / b / c + d * e * f";
+  String postfixExpression = convertInfixToPostfix(infixExpression);
+
+  System.out.println("Infix: " + infixExpression);
+  System.out.println("Postfix: " + postfixExpression);
+}
+
+4)
+
+public static boolean isOperator(String input) {
+  return OPERATOR_MAP.containsKey(input);
+}
+
+
+5)
+
+@Getter
+@AllArgsConstructor
+private enum Operator {
+  ADDITION("+", 0),
+  SUBTRACTION("-", 0),
+  MULTIPLICATION("*", 1),
+  DIVISION("/", 1);
+
+  private static final Map<String, Operator> OPERATOR_MAP =
+      Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));
+
+  private final String symbol;
+  private final int rank;
+
+  public static Operator fromSymbol(String symbol) {
+    if (!isOperator(symbol)) {
+      throw new IllegalArgumentException("Invalid operator");
+    }
+
+    return OPERATOR_MAP.get(symbol);
+  }
+
+  public static boolean isOperator(String input) {
+    return OPERATOR_MAP.containsKey(input);
+  }
+}
+
+6)
+
+
+7)
+
+private static String performOperation(String operand1, String operand2, Operator operator) {
+  int operandValue1 = Integer.parseInt(operand1);
+  int operandValue2 = Integer.parseInt(operand2);
+  int result;
+
+  switch (operator) {
+    case MULTIPLICATION:
+      result = operandValue1 * operandValue2;
+      break;
+
+    case DIVISION:
+      result = operandValue1 / operandValue2;
+      break;
+
+    case ADDITION:
+      result = operandValue1 + operandValue2;
+      break;
+
+    case SUBTRACTION:
+      result = operandValue1 - operandValue2;
+      break;
+
+    default:
+      throw new RuntimeException("Unknown operator");
+  }
+
+  return String.valueOf(result);
+}
+
+
+8)
+
+public static String evaluatePostfix(String expression) {
+  String[] terms = expression.split("\\s+");
+
+  stack.Stack<String> stack = new ArrayStack<>();
+
+  for (String term : terms) {
+    if (Operator.isOperator(term)) {
+      Operator operator = Operator.fromSymbol(term);
+
+      String operand2 = stack.pop();
+      String operand1 = stack.pop();
+      String result = performOperation(operand1, operand2, operator);
+
+      stack.push(result);
+    } else {
+      stack.push(term);
+    }
+  }
+
+  if (stack.size() != 1) {
+    throw new IllegalStateException("Stack should only have 1 element here");
+  }
+
+  return stack.pop();
+}
+
+
+9)
+
+private static String performOperation(String operand1, String operand2, Operator operator) {
+  int operandValue1 = Integer.parseInt(operand1);
+  int operandValue2 = Integer.parseInt(operand2);
+  int result;
+
+  switch (operator) {
+    case EXPONENTIATION:
+      result = (int) Math.pow(operandValue1, operandValue2);
+      break;
+
+    case MULTIPLICATION:
+      result = operandValue1 * operandValue2;
+      break;
+
+    case DIVISION:
+      result = operandValue1 / operandValue2;
+      break;
+
+    case ADDITION:
+      result = operandValue1 + operandValue2;
+      break;
+
+    case SUBTRACTION:
+      result = operandValue1 - operandValue2;
+      break;
+
+    default:
+      throw new RuntimeException("Unknown operator");
+  }
+
+  return String.valueOf(result);
+}
+
+
+10)
+
+public static String evaluateInfix(String infixExpression) {
+  String postfixExpression = convertInfixToPostfix(infixExpression);
+
+  return evaluatePostfix(postfixExpression);
+}
+
