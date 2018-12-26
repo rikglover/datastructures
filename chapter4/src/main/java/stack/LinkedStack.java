@@ -10,6 +10,56 @@ public class LinkedStack<E> implements Stack<E> {
 
   private int size = 0;
 
+  public static void main(String[] args) {
+    Stack<Integer> integerStack = new LinkedStack<>();
+
+    integerStack.push(1);
+    integerStack.push(2);
+    integerStack.push(3);
+
+    System.out.println("Size: " + integerStack.size());
+
+    while (!integerStack.isEmpty()) {
+      int peekItem = integerStack.peek();
+
+      if (peekItem != integerStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Stack<Double> doubleStack = new LinkedStack<>();
+
+    doubleStack.push(1.0);
+    doubleStack.push(2.0);
+    doubleStack.push(3.0);
+
+    System.out.println("Size: " + doubleStack.size());
+
+    while (!doubleStack.isEmpty()) {
+      double peekItem = doubleStack.peek();
+
+      if (peekItem != doubleStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Stack<String> stringStack = new LinkedStack<>();
+
+    stringStack.push("Hello ");
+    stringStack.push("World");
+    stringStack.push("!!!");
+
+    System.out.println("Size: " + stringStack.size());
+
+    while (!stringStack.isEmpty()) {
+      String peekItem = stringStack.peek();
+
+      if (!peekItem.equals(stringStack.pop())) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+  }
+
   @Override
   public boolean isEmpty() {
     return size == 0;
@@ -28,7 +78,7 @@ public class LinkedStack<E> implements Stack<E> {
 
   @Override
   public E pop() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
 
@@ -42,7 +92,7 @@ public class LinkedStack<E> implements Stack<E> {
 
   @Override
   public E peek() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
 
@@ -55,57 +105,5 @@ public class LinkedStack<E> implements Stack<E> {
   private static class Node<T> {
     private T data;
     private Node<T> next;
-  }
-
-  public static void main(String[] args) {
-    Stack<Integer> integerStack = new LinkedStack<>();
-
-    integerStack.push(1);
-    integerStack.push(2);
-    integerStack.push(3);
-
-    System.out.println("Size: " + integerStack.size());
-
-    while(!integerStack.isEmpty()) {
-      int peekItem = integerStack.peek();
-
-      if(peekItem != integerStack.pop()) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
-
-
-    Stack<Double> doubleStack = new LinkedStack<>();
-
-    doubleStack.push(1.0);
-    doubleStack.push(2.0);
-    doubleStack.push(3.0);
-
-    System.out.println("Size: " + doubleStack.size());
-
-    while(!doubleStack.isEmpty()) {
-      double peekItem = doubleStack.peek();
-
-      if(peekItem != doubleStack.pop()) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
-
-
-    Stack<String> stringStack = new LinkedStack<>();
-
-    stringStack.push("Hello ");
-    stringStack.push("World");
-    stringStack.push("!!!");
-
-    System.out.println("Size: " + stringStack.size());
-
-    while(!stringStack.isEmpty()) {
-      String peekItem = stringStack.peek();
-
-      if(!peekItem.equals(stringStack.pop())) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
   }
 }

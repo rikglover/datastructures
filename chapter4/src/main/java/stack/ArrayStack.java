@@ -21,6 +21,56 @@ public class ArrayStack<E> implements Stack<E> {
     data = allocateData(capacity);
   }
 
+  public static void main(String[] args) {
+    Stack<Integer> integerStack = new ArrayStack<>();
+
+    integerStack.push(1);
+    integerStack.push(2);
+    integerStack.push(3);
+
+    System.out.println("Size: " + integerStack.size());
+
+    while (!integerStack.isEmpty()) {
+      int peekItem = integerStack.peek();
+
+      if (peekItem != integerStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Stack<Double> doubleStack = new ArrayStack<>();
+
+    doubleStack.push(1.0);
+    doubleStack.push(2.0);
+    doubleStack.push(3.0);
+
+    System.out.println("Size: " + doubleStack.size());
+
+    while (!doubleStack.isEmpty()) {
+      double peekItem = doubleStack.peek();
+
+      if (peekItem != doubleStack.pop()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Stack<String> stringStack = new ArrayStack<>();
+
+    stringStack.push("Hello ");
+    stringStack.push("World");
+    stringStack.push("!!!");
+
+    System.out.println("Size: " + stringStack.size());
+
+    while (!stringStack.isEmpty()) {
+      String peekItem = stringStack.peek();
+
+      if (!peekItem.equals(stringStack.pop())) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+  }
+
   @Override
   public boolean isEmpty() {
     return top == EMPTY_INDEX;
@@ -83,55 +133,5 @@ public class ArrayStack<E> implements Stack<E> {
     System.arraycopy(data, 0, newData, 0, size());
 
     data = newData;
-  }
-
-  public static void main(String[] args) {
-    Stack<Integer> integerStack = new ArrayStack<>();
-
-    integerStack.push(1);
-    integerStack.push(2);
-    integerStack.push(3);
-
-    System.out.println("Size: " + integerStack.size());
-
-    while (!integerStack.isEmpty()) {
-      int peekItem = integerStack.peek();
-
-      if (peekItem != integerStack.pop()) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
-
-    Stack<Double> doubleStack = new ArrayStack<>();
-
-    doubleStack.push(1.0);
-    doubleStack.push(2.0);
-    doubleStack.push(3.0);
-
-    System.out.println("Size: " + doubleStack.size());
-
-    while (!doubleStack.isEmpty()) {
-      double peekItem = doubleStack.peek();
-
-      if (peekItem != doubleStack.pop()) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
-
-    Stack<String> stringStack = new ArrayStack<>();
-
-    stringStack.push("Hello ");
-    stringStack.push("World");
-    stringStack.push("!!!");
-
-    System.out.println("Size: " + stringStack.size());
-
-    while (!stringStack.isEmpty()) {
-      String peekItem = stringStack.peek();
-
-      if (!peekItem.equals(stringStack.pop())) {
-        throw new IllegalStateException("Peek value should be equal to pop value");
-      }
-    }
   }
 }

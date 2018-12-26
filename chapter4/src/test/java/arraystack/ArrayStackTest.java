@@ -60,13 +60,13 @@ public class ArrayStackTest {
   public void pushWithResize() {
     Stack<Integer> stack = new ArrayStack<>();
 
-    for(int i = 1; i <= 100000; i++) {
+    for (int i = 1; i <= 100000; i++) {
       stack.push(i);
 
       assertThat(stack.size()).isEqualTo(i);
     }
 
-    while(!stack.isEmpty()) {
+    while (!stack.isEmpty()) {
       stack.pop();
     }
 

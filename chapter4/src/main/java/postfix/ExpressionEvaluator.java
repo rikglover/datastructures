@@ -54,7 +54,16 @@ public class ExpressionEvaluator {
     StringJoiner output = new StringJoiner(SPACE);
 
     for (String term : terms) {
-      if (Operator.isOperator(term)) {
+      if (Operator.LEFT_PARENTHESIS.getSymbol().equals(term)) {
+        stack.push(Operator.LEFT_PARENTHESIS);
+      } else if (Operator.RIGHT_PARENTHESIS.getSymbol().equals(term)) {
+        Operator operatorFromStack = stack.pop();
+
+        while (!Operator.LEFT_PARENTHESIS.equals(operatorFromStack)) {
+          output.add(operatorFromStack.getSymbol());
+          operatorFromStack = stack.pop();
+        }
+      } else if (Operator.isOperator(term)) {
         Operator operator = Operator.fromSymbol(term);
 
         while (!stack.isEmpty() && stack.peek().getRank() >= operator.getRank()) {
@@ -122,11 +131,13 @@ public class ExpressionEvaluator {
   @Getter
   @AllArgsConstructor
   private enum Operator {
-    ADDITION("+", 0),
-    SUBTRACTION("-", 0),
-    MULTIPLICATION("*", 1),
-    DIVISION("/", 1),
-    EXPONENTIATION("^", 2);
+    LEFT_PARENTHESIS("(", 0),
+    RIGHT_PARENTHESIS(")", 0),
+    ADDITION("+", 1),
+    SUBTRACTION("-", 1),
+    MULTIPLICATION("*", 2),
+    DIVISION("/", 2),
+    EXPONENTIATION("^", 3);
 
     private static final Map<String, Operator> OPERATOR_MAP =
         Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));
