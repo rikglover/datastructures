@@ -56,7 +56,8 @@ private enum Operator {
   ADDITION("+", 0),
   SUBTRACTION("-", 0),
   MULTIPLICATION("*", 1),
-  DIVISION("/", 1);
+  DIVISION("/", 1),
+  EXPONENTIATION("^", 2);;
 
   private static final Map<String, Operator> OPERATOR_MAP =
       Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));
@@ -79,6 +80,35 @@ private enum Operator {
 
 6)
 
+@Getter
+@AllArgsConstructor
+private enum Operator {
+  LEFT_PARENTHESIS("(", 0),
+  RIGHT_PARENTHESIS(")", 0),
+  ADDITION("+", 1),
+  SUBTRACTION("-", 1),
+  MULTIPLICATION("*", 2),
+  DIVISION("/", 2),
+  EXPONENTIATION("^", 3);
+
+  private static final Map<String, Operator> OPERATOR_MAP =
+      Stream.of(Operator.values()).collect(Collectors.toMap(Operator::getSymbol, identity()));
+
+  private final String symbol;
+  private final int rank;
+
+  public static Operator fromSymbol(String symbol) {
+    if (!isOperator(symbol)) {
+      throw new IllegalArgumentException("Invalid operator");
+    }
+
+    return OPERATOR_MAP.get(symbol);
+  }
+
+  public static boolean isOperator(String input) {
+    return OPERATOR_MAP.containsKey(input);
+  }
+}
 
 7)
 
@@ -185,3 +215,54 @@ public static String evaluateInfix(String infixExpression) {
   return evaluatePostfix(postfixExpression);
 }
 
+11a) On whiteboard
+
+11b)
+
+public static boolean isBalanced(String expression) {
+  stack.Stack<Operator> stack = new ArrayStack<>();
+
+  String[] terms = expression.split("\\s+");
+
+  for(String term : terms) {
+    if(Operator.LEFT_PARENTHESIS.getSymbol().equals(term)) {
+      stack.push(Operator.LEFT_PARENTHESIS);
+    } else if(Operator.RIGHT_PARENTHESIS.getSymbol().equals(term)) {
+      if(stack.isEmpty()) {
+        return false;
+      }
+
+      stack.pop();
+    }
+  }
+
+  return stack.isEmpty();
+}
+
+11c)
+
+public static boolean isBalancedGeneral(String expression) {
+  stack.Stack<String> stack = new ArrayStack<>();
+
+  String[] terms = expression.split("\\s+");
+
+  Set<String> validClosers = Stream.of(")", "]", "}").collect(toSet());
+
+  for(String term : terms) {
+    if(term.equals("(")) {
+      stack.push(")");
+    } else if(term.equals("[")) {
+      stack.push("]");
+    } else if(term.equals("{")) {
+      stack.push("}");
+    } else if(validClosers.contains(term)) {
+      if(stack.isEmpty() || !stack.peek().equals(term)) {
+        return false;
+      }
+
+      stack.pop();
+    }
+  }
+
+  return stack.isEmpty();
+}

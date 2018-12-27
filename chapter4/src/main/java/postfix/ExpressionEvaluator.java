@@ -1,8 +1,10 @@
 package postfix;
 
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toSet;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -85,6 +87,52 @@ public class ExpressionEvaluator {
     }
 
     return output.toString();
+  }
+
+  public static boolean isBalanced(String expression) {
+    stack.Stack<Operator> stack = new ArrayStack<>();
+
+    String[] terms = expression.split("\\s+");
+
+    for(String term : terms) {
+      if(Operator.LEFT_PARENTHESIS.getSymbol().equals(term)) {
+        stack.push(Operator.LEFT_PARENTHESIS);
+      } else if(Operator.RIGHT_PARENTHESIS.getSymbol().equals(term)) {
+        if(stack.isEmpty()) {
+          return false;
+        }
+
+        stack.pop();
+      }
+    }
+
+    return stack.isEmpty();
+  }
+
+  public static boolean isBalancedGeneral(String expression) {
+    stack.Stack<String> stack = new ArrayStack<>();
+
+    String[] terms = expression.split("\\s+");
+
+    Set<String> validClosers = Stream.of(")", "]", "}").collect(toSet());
+
+    for(String term : terms) {
+      if(term.equals("(")) {
+        stack.push(")");
+      } else if(term.equals("[")) {
+        stack.push("]");
+      } else if(term.equals("{")) {
+        stack.push("}");
+      } else if(validClosers.contains(term)) {
+        if(stack.isEmpty() || !stack.peek().equals(term)) {
+          return false;
+        }
+
+        stack.pop();
+      }
+    }
+
+    return stack.isEmpty();
   }
 
   public static void main(String[] args) {

@@ -37,6 +37,22 @@ public class ExpressionEvaluatorTest {
     assertThat(actualResult).isEqualTo(expectedResult);
   }
 
+  @Test
+  @Parameters(method = "getIsBalancedParameters")
+  public void isBalanced(String expression, boolean expectedResult) {
+    boolean actualResult = ExpressionEvaluator.isBalanced(expression);
+
+    assertThat(actualResult).isEqualTo(expectedResult);
+  }
+
+  @Test
+  @Parameters(method = "getIsBalancedGeneralParameters")
+  public void isBalancedGeneral(String expression, boolean expectedResult) {
+    boolean actualResult = ExpressionEvaluator.isBalancedGeneral(expression);
+
+    assertThat(actualResult).isEqualTo(expectedResult);
+  }
+
   private Object[][] getEvaluatePostfixParameters() {
     return new Object[][] {
       {"1 1 +", "2"},
@@ -84,6 +100,31 @@ public class ExpressionEvaluatorTest {
       {"( a + b ) * ( c + d )", "a b + c d + *"},
       {"( ( a + b ) / c + d ) / ( e - f )", "a b + c / d + e f - /"},
       {"b / ( ( x - y - z ) * c + d )", "b x y - z - c * d + /"}
+    };
+  }
+
+  private Object[][] getIsBalancedParameters() {
+    return new Object[][] {
+        {"", true},
+        {"( ", false },
+        {"( )", true },
+        {"( a + ( b + c ) - d )", true },
+        {"( ( a / ( b + c ) - d ) ) + e", true},
+        {"( ( a / ( b + c - d ) ) + e", false},
+        {"( ( ( a - b ) / ( d - ( x / y / z ) + q ) ) + n ) - y", true}
+    };
+  }
+
+  private Object[][] getIsBalancedGeneralParameters() {
+    return new Object[][] {
+        {"", true},
+        {"( ", false },
+        {"( )", true },
+        {"( a + [ b + c ] - d )", true },
+        {"{ ( a / [ b + c ] - d ) } + e", true},
+        {"[ [ a / [ b + c - d ] ] + e", false},
+        {"{ { { a - b } / [ d - [ x / y / z ] + q ] } + n } - y", true},
+        {"{ { { a - b } / [ d - [ x / ( y / z ] + q ] } + n } - y", false}
     };
   }
 }
