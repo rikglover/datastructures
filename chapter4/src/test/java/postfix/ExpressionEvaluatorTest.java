@@ -74,10 +74,16 @@ public class ExpressionEvaluatorTest {
       {"a / b / c + d * e * f", "a b / c / d e * f * +"},
       {"a / b / c + d ^ n * e * f", "a b / c / d n ^ e * f * +"},
       {"( a + b ) / c", "a b + c /"},
+      {"( a / ( a + b ) + c ) * d", "a a b + / c + d *"},
       {"( a + b ) * ( c + d )", "a b + c d + *"},
+      {"( a / ( a + b ) + c ) * d - e * ( x + y )", "a a b + / c + d * e x y + * -"},
       {"a / ( x + y + z ) / c + d ^ n * e * f", "a x y + z + / c / d n ^ e * f * +"},
       {"a / ( x + y + z ) / c + d ^ ( p - q ) * e * f", "a x y + z + / c / d p q - ^ e * f * +"},
-      {"a + ( b + c + ( x / ( y - z ) ) ) - d", "a b c + x y z - / + + d -" }
+      {"a + ( b + c + ( x / ( y - z ) ) ) - d", "a b c + x y z - / + + d -" },
+      {"a + ( a / ( b + c ) ) + d", "a a b c + / + d +"},
+      {"( a + b ) * ( c + d )", "a b + c d + *"},
+      {"( ( a + b ) / c + d ) / ( e - f )", "a b + c / d + e f - /"},
+      {"b / ( ( x - y - z ) * c + d )", "b x y - z - c * d + /"}
     };
   }
 }

@@ -59,7 +59,7 @@ public class ExpressionEvaluator {
       } else if (Operator.RIGHT_PARENTHESIS.getSymbol().equals(term)) {
         Operator operatorFromStack = stack.pop();
 
-        while (!Operator.LEFT_PARENTHESIS.equals(operatorFromStack)) {
+        while (Operator.LEFT_PARENTHESIS != operatorFromStack) {
           output.add(operatorFromStack.getSymbol());
           operatorFromStack = stack.pop();
         }
