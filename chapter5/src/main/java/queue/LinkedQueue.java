@@ -13,31 +13,27 @@ public class LinkedQueue<E> implements Queue<E> {
 
   @Override
   public E dequeue() {
-    if(size == 0) {
+    if(isEmpty()) {
       throw new NoSuchElementException();
-    } else if(size == 1) {
-      Node<E> p = front;
-
-      front = null;
-      back = null;
-      size -= 1;
-
-      return p.getData();
-    } else {
-      Node<E> p = front;
-
-      front = front.getNext();
-      size -= 1;
-
-      return p.getData();
     }
+
+    E result = front.getData();
+
+    front = front.getNext();
+    size -= 1;
+
+    if(isEmpty()) {
+      back = null;
+    }
+
+    return result;
   }
 
   @Override
   public void enqueue(E item) {
     Node<E> p = new Node<>(item);
 
-    if(size == 0) {
+    if(isEmpty()) {
       front = p;
       back = p;
     } else {
@@ -57,9 +53,9 @@ public class LinkedQueue<E> implements Queue<E> {
   public E peek() {
     if(isEmpty()) {
       throw new NoSuchElementException();
-    } else {
-      return front.getData();
     }
+
+    return front.getData();
   }
 
   @Override
