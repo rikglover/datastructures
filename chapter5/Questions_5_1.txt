@@ -55,4 +55,80 @@ public interface Queue<E> {
   int size();
 }
 
-4)
+4) I did this on the whiteboard and then checked my work by comparing it
+to my implementation in LinkedQueue.java.
+
+There were two mistakes from my original whiteboard design:
+
+The dequeue method needed to return the data attribute from the front element
+in the general case of the dequeue (i.e. when size does not equal 0 or 1.
+
+I forgot to have the word new in the case where size == 0 in the dequeue method.
+It said "throw NoSuchElementException()" instead of "throw new NoSuchElementException()".
+
+5)
+
+public static void main(String[] args) {
+  Queue<Integer> integerQueue = new LinkedQueue<>();
+
+  integerQueue.enqueue(5);
+  integerQueue.enqueue(6);
+  integerQueue.enqueue(7);
+
+  System.out.println("\n\nFront of queue: " + integerQueue.peek());
+  System.out.println("Size of queue: " + integerQueue.size());
+  System.out.println();
+
+  while(!integerQueue.isEmpty()) {
+    System.out.println("Dequeing " + integerQueue.dequeue());
+  }
+
+  System.out.println("\n");
+
+  Queue<Double> doubleQueue = new LinkedQueue<>();
+
+  doubleQueue.enqueue(5.0);
+  doubleQueue.enqueue(6.0);
+  doubleQueue.enqueue(7.0);
+
+  System.out.println("Front of queue: " + doubleQueue.peek());
+  System.out.println("Size of queue: " + doubleQueue.size());
+  System.out.println();
+
+  while(!doubleQueue.isEmpty()) {
+    System.out.println("Dequeing " + doubleQueue.dequeue());
+  }
+
+  System.out.println("\n");
+
+  Queue<String> stringQueue = new LinkedQueue<>();
+
+  stringQueue.enqueue("Five");
+  stringQueue.enqueue("Six");
+  stringQueue.enqueue("Seven");
+
+  System.out.println("Front of queue: " + stringQueue.peek());
+  System.out.println("Size of queue: " + stringQueue.size());
+  System.out.println();
+
+  while(!stringQueue.isEmpty()) {
+    System.out.println("Dequeing " + stringQueue.dequeue());
+  }
+
+  System.out.println("\n");
+}
+
+6a) dequeue checks for an empty queue, then performs a step to move save off the front pointer, a
+step to move the front pointer to the front.next a step to decrement size, and a step to return the
+data attribute from the original front. This is a fixed number of steps and therefore O(1).
+
+6b) enqueue requires a step to create the new node off of the current back node and a step to
+move the back pointer to the new node. This is 2 steps, which is O(1).
+
+6c) isEmpty() simply returns a comparison of the current size and 0, which is just a single step and
+therefore O(1).
+
+6d) peek requires a step to check for an empty queue, and a step to return the data attribute of
+the front element. This is 2 steps, which makes it O(1).
+
+6e) size() simply returns the value of the size attribute. This is constant time or O(1)
