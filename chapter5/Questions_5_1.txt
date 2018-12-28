@@ -1,0 +1,58 @@
+1a) On whiteboard
+
+2b)
+
+q.enqueue(1)                  1
+q.dequeue()     1
+q.enqueue(2)                  2
+q.dequeue()     2
+q.enqueue(3)                  3
+q.dequeue()     3
+q.size()        0
+q.enqueue(4)                  4
+q.peek()        4             4
+q.dequeue()     4
+
+2c)
+
+q.enqueue(10)                 10
+q.enqueue(20)                 10 20
+q.enqueue(30)                 10 20 30
+q.enqueue(40)                 10 20 30 40
+q.peek()       10             10 20 30 40
+q.enqueue(50)                 10 20 30 40 50
+q.dequeue()    10             20 30 40 50
+q.size()       4              20 30 40 50
+q.dequeue()    20             30 40 50
+q.dequeue()    30             40 50
+
+
+2a) This would not be a good use case for a queue as a queue is optimized for being removed at the
+front of the list not in the middle of the list.
+
+2b) This is an appropriate use case for a queue because the one waiting the longest was the first
+one added to the queue, and will be the first to be removed. This is first in, first out, which is
+what is provided by a queue.
+
+2c) This would not be an appropriate use case for a queue because a queue is first in first out, whereas
+this scenario would be optimized for first in last out, like a stack.
+
+2d) This is an appropriate use case for a queue because if the items are done in the order that they
+are received then they are being operated on in a first in, first out order, which is exactly what a
+queue provides.
+
+2e) As a queue is not optimized for random access, it cannot be shuffled efficiently. Therefore,
+this would not be a use case for queue.
+
+
+3)
+
+public interface Queue<E> {
+  E dequeue();
+  void enqueue(E item);
+  boolean isEmpty();
+  E peek();
+  int size();
+}
+
+4)
