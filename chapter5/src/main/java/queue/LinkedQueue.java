@@ -31,16 +31,15 @@ public class LinkedQueue<E> implements Queue<E> {
 
   @Override
   public void enqueue(E item) {
-    Node<E> p = new Node<>(item);
+    Node<E> newNode = new Node<>(item);
 
     if(isEmpty()) {
-      front = p;
-      back = p;
+      front = newNode;
     } else {
-      back.setNext(p);
-      back = p;
+      back.setNext(newNode);
     }
 
+    back = newNode;
     size += 1;
   }
 
