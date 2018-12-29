@@ -132,3 +132,9 @@ therefore O(1).
 the front element. This is 2 steps, which makes it O(1).
 
 6e) size() simply returns the value of the size attribute. This is constant time or O(1)
+
+
+7) My answer was slightly different but totally equivalent to the solution in the book. He adds a
+dummy node to the front of the list but still maintains a "front" pointer, which always points to
+the dummy node. I got rid of the front pointer and had a dummy pointer instead. See
+DummyLinkedList.java for more details.
