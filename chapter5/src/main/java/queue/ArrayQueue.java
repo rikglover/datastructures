@@ -66,6 +66,65 @@ public class ArrayQueue<E> implements Queue<E> {
     return size;
   }
 
+  public static void main(String[] args) {
+    Queue<Integer> integerQueue = new ArrayQueue<>();
+
+    integerQueue.enqueue(1);
+    integerQueue.enqueue(2);
+    integerQueue.enqueue(3);
+
+    System.out.println();
+    System.out.println("Size: " + integerQueue.size());
+
+    while (!integerQueue.isEmpty()) {
+      int peekItem = integerQueue.peek();
+
+      System.out.println(peekItem);
+
+      if (peekItem != integerQueue.dequeue()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Queue<Double> doubleQueue = new ArrayQueue<>();
+
+    doubleQueue.enqueue(1.0);
+    doubleQueue.enqueue(2.0);
+    doubleQueue.enqueue(3.0);
+
+    System.out.println();
+    System.out.println("Size: " + doubleQueue.size());
+
+    while (!doubleQueue.isEmpty()) {
+      double peekItem = doubleQueue.peek();
+
+      System.out.println(peekItem);
+
+      if (peekItem != doubleQueue.dequeue()) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+
+    Queue<String> stringQueue = new ArrayQueue<>();
+
+    stringQueue.enqueue("Hello ");
+    stringQueue.enqueue("world");
+    stringQueue.enqueue("!!!");
+
+    System.out.println();
+    System.out.println("Size: " + stringQueue.size());
+
+    while (!stringQueue.isEmpty()) {
+      String peekItem = stringQueue.peek();
+
+      System.out.println(peekItem);
+
+      if (!peekItem.equals(stringQueue.dequeue())) {
+        throw new IllegalStateException("Peek value should be equal to pop value");
+      }
+    }
+  }
+
   private boolean isFull() {
     return size() == capacity;
   }
