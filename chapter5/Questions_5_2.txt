@@ -1,0 +1,22 @@
+1) For enqueuing, the logic is to put the item to be enqueued in the next array cell after the current
+rear. Therefore, you must first increment the index for rear and then perform the assignment to the
+data array located at the rear. For dequeing, the logic is to fetch the current item stored at front
+and THEN increment the value of front in order to remove the item at the front of the queue.
+
+2) front = 0, rear = capacity - 1, with a size variable
+
+or
+
+front = -1, rear = -1 with no size variable
+
+
+3a) As long as you have a size instance variable, that relationship will always be true. When the
+array is full, there will be a number elements in the queue equal to the capacity which will put
+the front of the queue in the element after the back. When the queue is empty, the same condition
+will be true. You will differentiate between them by the size variable.
+
+3b) If there is no size variable the queue will need to start with the front and back set to -1. In
+the event that front and back are ever equal to each other and a dequeue operation is performed the
+queue needs to reset the front and back to -1; When the queue is empty an an enqueue operation is
+performed the front and back need to be set to zero.
+

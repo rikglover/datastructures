@@ -1,8 +1,8 @@
 package queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
+import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 import org.junit.Test;
 

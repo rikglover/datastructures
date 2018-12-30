@@ -1,19 +1,20 @@
 package queue;
 
 import java.util.NoSuchElementException;
+import java.util.Stack;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 public class LinkedQueue<E> implements Queue<E> {
+
   private Node<E> front;
   private Node<E> back;
-
   private int size;
 
   @Override
   public E dequeue() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new NoSuchElementException();
     }
 
@@ -22,7 +23,7 @@ public class LinkedQueue<E> implements Queue<E> {
     front = front.getNext();
     size -= 1;
 
-    if(isEmpty()) {
+    if (isEmpty()) {
       back = null;
     }
 
@@ -33,7 +34,7 @@ public class LinkedQueue<E> implements Queue<E> {
   public void enqueue(E item) {
     Node<E> newNode = new Node<>(item);
 
-    if(isEmpty()) {
+    if (isEmpty()) {
       front = newNode;
     } else {
       back.setNext(newNode);
@@ -50,7 +51,7 @@ public class LinkedQueue<E> implements Queue<E> {
 
   @Override
   public E peek() {
-    if(isEmpty()) {
+    if (isEmpty()) {
       throw new NoSuchElementException();
     }
 
@@ -73,7 +74,7 @@ public class LinkedQueue<E> implements Queue<E> {
     System.out.println("Size of queue: " + integerQueue.size());
     System.out.println();
 
-    while(!integerQueue.isEmpty()) {
+    while (!integerQueue.isEmpty()) {
       System.out.println("Dequeing " + integerQueue.dequeue());
     }
 
@@ -89,7 +90,7 @@ public class LinkedQueue<E> implements Queue<E> {
     System.out.println("Size of queue: " + doubleQueue.size());
     System.out.println();
 
-    while(!doubleQueue.isEmpty()) {
+    while (!doubleQueue.isEmpty()) {
       System.out.println("Dequeing " + doubleQueue.dequeue());
     }
 
@@ -105,7 +106,7 @@ public class LinkedQueue<E> implements Queue<E> {
     System.out.println("Size of queue: " + stringQueue.size());
     System.out.println();
 
-    while(!stringQueue.isEmpty()) {
+    while (!stringQueue.isEmpty()) {
       System.out.println("Dequeing " + stringQueue.dequeue());
     }
 
