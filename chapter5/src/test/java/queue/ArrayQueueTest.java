@@ -1,10 +1,8 @@
 package queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
-import java.util.Random;
 import org.junit.Test;
 
 public class ArrayQueueTest {
@@ -108,14 +106,14 @@ public class ArrayQueueTest {
       assertThat(queue.size()).isEqualTo(i + 1);
     }
 
-    for (int i = 99999; i >= 0; i++) {
+    for (int i = 0; i < 100000; i++) {
       if (i != 0) {
-        assertThat(queue.peek()).isEqualTo(100000 - i + 1);
+        assertThat(queue.peek()).isEqualTo(i);
       }
 
-      assertThat(queue.size()).isEqualTo(i + 1);
+      assertThat(queue.size()).isEqualTo(100000 - i);
       assertThat(queue.dequeue()).isEqualTo(i);
-      assertThat(queue.size()).isEqualTo(i);
+      assertThat(queue.size()).isEqualTo(100000 - i - 1);
     }
   }
 
