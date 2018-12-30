@@ -8,7 +8,7 @@ public class ArrayQueue<E> implements Queue<E> {
 
   private int capacity = DEFAULT_CAPACITY;
   private int size = 0;
-  private int front = -1;
+  private int front = 0;
   private int back = -1;
 
   private E[] data;
@@ -16,6 +16,7 @@ public class ArrayQueue<E> implements Queue<E> {
   public ArrayQueue() {
     this(DEFAULT_CAPACITY);
   }
+
   public ArrayQueue(int capacity) {
     data = allocateArray(capacity);
   }
@@ -24,38 +25,26 @@ public class ArrayQueue<E> implements Queue<E> {
   public E dequeue() {
     if(isEmpty()) {
       throw new NoSuchElementException();
-    } else {
-      E result = data[front];
-
-      data[front] = null;
-      front = (front + 1) % capacity;
-      size -= 1;
-
-      if(isEmpty()) {
-        front = -1;
-        back = -1;
-      }
-
-      return result;
     }
+
+    E result = data[front];
+
+    data[front] = null;
+    front = (front + 1) % capacity;
+    size -= 1;
+
+    return result;
   }
 
   @Override
   public void enqueue(E item) {
-    if(isEmpty()) {
-      front = 0;
-      back = 0;
-      size += 1;
-      data[0] = item;
-    } else {
-      if(isFull()) {
-        resizeArray();
-      }
-
-      back = (back + 1) % capacity;
-      data[back] = item;
-      size += 1;
+    if(isFull()) {
+      resizeArray();
     }
+
+    back = (back + 1) % capacity;
+    data[back] = item;
+    size += 1;
   }
 
   @Override
@@ -93,7 +82,6 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     data = newData;
-
     front = 0;
     back = size - 1;
   }
