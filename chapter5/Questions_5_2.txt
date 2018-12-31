@@ -40,11 +40,43 @@ back = (back + 1) % data.length;
 Therefore, (rear + 1) % capacity == front will be true in both cases.
 
 3b) Because you cannot differentiate between a full and an empty queue as described in (3a) without
-a size attribute, you must define full to mean that the array contains data.length - 1 items. This
-will ensure that you can differentiate between a full and empty queue.
+a size attribute, you must develop a different strategy for differentiating between full and empty.
+One approach is to define full to mean that the array contains data.length - 1 items. This
+will ensure that you can differentiate between a full and empty queue as follows:
 
 If (rear + 1) % capacity == front, the queue is empty.
 If (rear + 2) % capacity == front, the queue is full
+
+This will unfortunately have the side effect of only allowing you to store data.length - 1 elements
+in the queue, which is suboptimal. Additionally, you also are still starting the back index out at
+index -1, which is quirky.
+
+An alternative strategy, which is the strategy used by the Java Collections Framework ArrayDeque
+implementation, is to redefine the semantics of the front and back variables as follows:
+
+Rather than having both front and back refer to the current index of the front and back values, have
+front continue to refer to the current index of the front, and back refer to the NEXT index of the
+back. This subtle change in semantics for the back variable will allow you to start the front and
+back indices at 0 (which is more natural) as well as utilize all cells of the array, rather than
+only data.length - 1 as with the previous solution.
+
+However, in order to accomplish this it will be necessary to change the logic of the enqueue method
+as follows:
+
+Because the back variable now represents the NEXT index for the back, we will now add new items to
+the back of the queue as the first step of the enqueue method and will increment the back index to the
+NEXT location of the back after storing the item. Additionally, we will move the check for the need
+to resize to after these two steps and will use the condition that front == back to check for a full
+queue. Of course, an empty queue is also indicated by this criteria. However, because we are
+performing this check AFTER adding an element we know that the queue cannot be empty, which
+therefore means it must be full. So, if after adding an item, front equals back we will know that w
+have a full queue, and must therefore resize the array. The dequeue, peek, resize and isEmpty methods
+will continue to work as before. However, the size calculation will need to be updated to reflect
+the fact that the back variable now stores the NEXT index for the back, which means the size
+calculation is 1 less than with the previous implementation and that there is no need to take the
+modulus of the size calculation when front is greater than back.
+
+Please see ArrayQueueJava for more details.
 
 
 4) The resizing only occurs in the relatively rare event that you have exceeded the capacity of the
