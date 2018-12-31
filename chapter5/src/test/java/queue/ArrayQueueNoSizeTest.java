@@ -204,5 +204,90 @@ public class ArrayQueueNoSizeTest {
     assertThat(queue.size()).isEqualTo(0);
 
     assertThat(queue.isEmpty()).isTrue();
+
+
+    // repeat process for better test!
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+
+    assertThat(queue.size()).isEqualTo(3);
+    assertThat(queue.dequeue()).isEqualTo(1);
+    assertThat(queue.size()).isEqualTo(2);
+    assertThat(queue.dequeue()).isEqualTo(2);
+    assertThat(queue.size()).isEqualTo(1);
+
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
+
+    assertThat(queue.size()).isEqualTo(4);
+    assertThat(queue.dequeue()).isEqualTo(3);
+    assertThat(queue.size()).isEqualTo(3);
+    assertThat(queue.dequeue()).isEqualTo(4);
+    assertThat(queue.size()).isEqualTo(2);
+
+    queue.enqueue(7);
+    queue.enqueue(8);
+    queue.enqueue(9);
+
+    assertThat(queue.size()).isEqualTo(5);
+    assertThat(queue.dequeue()).isEqualTo(5);
+    assertThat(queue.size()).isEqualTo(4);
+    assertThat(queue.dequeue()).isEqualTo(6);
+    assertThat(queue.size()).isEqualTo(3);
+
+    queue.enqueue(10);
+    queue.enqueue(11);
+    queue.enqueue(12);
+
+    assertThat(queue.size()).isEqualTo(6);
+    assertThat(queue.dequeue()).isEqualTo(7);
+    assertThat(queue.size()).isEqualTo(5);
+    assertThat(queue.dequeue()).isEqualTo(8);
+    assertThat(queue.size()).isEqualTo(4);
+
+    queue.enqueue(13);
+    queue.enqueue(14);
+    queue.enqueue(15);
+
+    assertThat(queue.size()).isEqualTo(7);
+    assertThat(queue.dequeue()).isEqualTo(9);
+    assertThat(queue.size()).isEqualTo(6);
+    assertThat(queue.dequeue()).isEqualTo(10);
+    assertThat(queue.size()).isEqualTo(5);
+
+    queue.enqueue(16);
+    queue.enqueue(17);
+    queue.enqueue(18);
+    queue.enqueue(19);
+    queue.enqueue(20);
+    queue.enqueue(21);
+
+    assertThat(queue.size()).isEqualTo(11);
+    assertThat(queue.dequeue()).isEqualTo(11);
+    assertThat(queue.size()).isEqualTo(10);
+    assertThat(queue.dequeue()).isEqualTo(12);
+    assertThat(queue.size()).isEqualTo(9);
+    assertThat(queue.dequeue()).isEqualTo(13);
+    assertThat(queue.size()).isEqualTo(8);
+    assertThat(queue.dequeue()).isEqualTo(14);
+    assertThat(queue.size()).isEqualTo(7);
+    assertThat(queue.dequeue()).isEqualTo(15);
+    assertThat(queue.size()).isEqualTo(6);
+    assertThat(queue.dequeue()).isEqualTo(16);
+    assertThat(queue.size()).isEqualTo(5);
+    assertThat(queue.dequeue()).isEqualTo(17);
+    assertThat(queue.size()).isEqualTo(4);
+    assertThat(queue.dequeue()).isEqualTo(18);
+    assertThat(queue.size()).isEqualTo(3);
+    assertThat(queue.dequeue()).isEqualTo(19);
+    assertThat(queue.size()).isEqualTo(2);
+    assertThat(queue.dequeue()).isEqualTo(20);
+    assertThat(queue.size()).isEqualTo(1);
+    assertThat(queue.dequeue()).isEqualTo(21);
+    assertThat(queue.size()).isEqualTo(0);
+
+    assertThat(queue.isEmpty()).isTrue();
   }
 }
