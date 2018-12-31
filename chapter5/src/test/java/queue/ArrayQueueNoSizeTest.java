@@ -5,11 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.NoSuchElementException;
 import org.junit.Test;
 
-public class ArrayQueueTest {
+public class ArrayQueueNoSizeTest {
 
   @Test(expected = NoSuchElementException.class)
   public void testPeekEmptyQueue() {
-    Queue<Integer> queue = new ArrayQueue<>();
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
 
     queue.peek();
 
@@ -18,7 +18,7 @@ public class ArrayQueueTest {
 
   @Test(expected = NoSuchElementException.class)
   public void testDequeueEmptyQueue() {
-    Queue<Integer> queue = new ArrayQueue<>();
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
 
     queue.dequeue();
 
@@ -27,7 +27,7 @@ public class ArrayQueueTest {
 
   @Test
   public void testQueue() {
-    Queue<Integer> queue = new ArrayQueue<>();
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
 
     assertThat(queue.isEmpty()).isTrue();
     assertThat(queue.size()).isZero();
@@ -90,7 +90,7 @@ public class ArrayQueueTest {
   @Test
   public void testQueueManyItems() {
 
-    Queue<Integer> queue = new ArrayQueue<>();
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
 
     assertThat(queue.isEmpty()).isTrue();
 
@@ -120,7 +120,7 @@ public class ArrayQueueTest {
 
   @Test
   public void testDrift() {
-    Queue<Integer> queue = new ArrayQueue<>();
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
 
     queue.enqueue(1);
     queue.enqueue(2);
