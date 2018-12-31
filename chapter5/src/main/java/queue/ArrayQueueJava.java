@@ -60,7 +60,7 @@ public class ArrayQueueJava<E> implements Queue<E> {
   @Override
   public int size() {
     if(front > back) {
-      return (data.length + back - front) % data.length;
+      return data.length + back - front;
     } else {
       return back - front;
     }
@@ -133,7 +133,7 @@ public class ArrayQueueJava<E> implements Queue<E> {
 
     for(int i = 0; i < currentSize; i++) {
       newData[i] = data[j];
-      j = (j + 1) % data.length;
+      j = (j + 1) % currentSize;
     }
 
     front = 0;
