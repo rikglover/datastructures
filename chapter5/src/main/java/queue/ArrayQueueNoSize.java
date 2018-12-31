@@ -35,7 +35,7 @@ public class ArrayQueueNoSize<E> implements Queue<E> {
 
   @Override
   public void enqueue(E item) {
-    if(size() == data.length - 1) {
+    if(isFull()) {
       resizeArray();
     }
 
@@ -125,18 +125,23 @@ public class ArrayQueueNoSize<E> implements Queue<E> {
     }
   }
 
+  private boolean isFull() {
+    return size() == data.length - 1;
+  }
+
   private void resizeArray() {
     E[] newData = allocateArray(RESIZE_FACTOR * data.length);
 
+    int size = size();
     int j = front;
 
-    for(int i = 0; i < size(); i++) {
+    for(int i = 0; i < size; i++) {
       newData[i] = data[j];
       j = (j + 1) % data.length;
     }
 
     front = 0;
-    back = size() - 1;
+    back = size - 1;
     data = newData;
   }
 

@@ -122,6 +122,9 @@ public class ArrayQueueNoSizeTest {
   public void testDrift() {
     Queue<Integer> queue = new ArrayQueueNoSize<>();
 
+    assertThat(queue.size()).isZero();
+    assertThat(queue.isEmpty()).isTrue();
+
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);
@@ -177,6 +180,9 @@ public class ArrayQueueNoSizeTest {
     queue.enqueue(18);
     queue.enqueue(19);
     queue.enqueue(20);
+
+    assertThat(queue.isEmpty()).isFalse();
+
     queue.enqueue(21);
 
     assertThat(queue.size()).isEqualTo(11);
@@ -289,5 +295,64 @@ public class ArrayQueueNoSizeTest {
     assertThat(queue.size()).isEqualTo(0);
 
     assertThat(queue.isEmpty()).isTrue();
+  }
+
+  @Test
+  public void testFullQueueWithFrontGreaterThanBack() {
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
+
+    assertThat(queue.isEmpty()).isTrue();
+    assertThat(queue.size()).isZero();
+
+    queue.enqueue(3);
+    queue.enqueue(2);
+    queue.enqueue(1);
+
+    assertThat(queue.isEmpty()).isFalse();
+    assertThat(queue.size()).isEqualTo(3);
+
+    assertThat(queue.dequeue()).isEqualTo(3);
+    assertThat(queue.size()).isEqualTo(2);
+    assertThat(queue.isEmpty()).isFalse();
+
+    assertThat(queue.dequeue()).isEqualTo(2);
+    assertThat(queue.size()).isEqualTo(1);
+    assertThat(queue.isEmpty()).isFalse();
+
+    // So now the front and back of the queue are at index 2, with value 1
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
+    queue.enqueue(7);
+    queue.enqueue(8);
+    queue.enqueue(9);
+    queue.enqueue(10);
+
+    assertThat(queue.size()).isEqualTo(10);
+    assertThat(queue.isEmpty()).isFalse();
+  }
+
+  @Test
+  public void testFullQueueWithBackGreaterThanFront() {
+    Queue<Integer> queue = new ArrayQueueNoSize<>();
+
+    assertThat(queue.isEmpty()).isTrue();
+    assertThat(queue.size()).isZero();
+
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
+    queue.enqueue(7);
+    queue.enqueue(8);
+    queue.enqueue(9);
+    queue.enqueue(10);
+
+    assertThat(queue.size()).isEqualTo(10);
+    assertThat(queue.isEmpty()).isFalse();
   }
 }

@@ -7,9 +7,45 @@ and THEN increment the value of front in order to remove the item at the front o
 
 ** My solution was different than his **
 
+** New answer follows below **
+
+Using the code provided by the author as a starting point, where we will be incrementing the
+front and back by doing the following:
+
+front = (front + 1) % data.length;
+
+and
+
+back = (back + 1) % data.length;
+
+The simplest starting values for front and back are 0 and -1, respectively. Because we will
+initialize the size variable to 0, we will know that the queue has zero in this starting state,
+and therefore, be empty.
+
 3) ** My answer was not quite right here **
 
-** need to redo **
+
+** New answer follows below **
+
+Using the code provided by the author as a starting point, where we will be incrementing the
+front and back by doing the following:
+
+front = (front + 1) % data.length;
+
+and
+
+back = (back + 1) % data.length;
+
+3a) A full queue and empty queue are both represented with the back immediately preceding the front.
+Therefore, (rear + 1) % capacity == front will be true in both cases.
+
+3b) Because you cannot differentiate between a full and an empty queue as described in (3a) without
+a size attribute, you must define full to mean that the array contains data.length - 1 items. This
+will ensure that you can differentiate between a full and empty queue.
+
+If (rear + 1) % capacity == front, the queue is empty.
+If (rear + 2) % capacity == front, the queue is full
+
 
 4) The resizing only occurs in the relatively rare event that you have exceeded the capacity of the
 underlying array for the queue. Therefore, just like the stack implementation, the resizing of the
