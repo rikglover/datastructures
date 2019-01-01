@@ -1,0 +1,136 @@
+1a) drops is the only new instance variable
+
+1b) There are 2 new methods:
+
+  - A new constructor, FixedLengthQueue
+  - A new drops() method
+
+
+1c) The enqueue method is the only one that has been overriden.
+
+
+2) Overloading a method is when you provide a second implementation of a particular method that
+accepts different parameters. Overriding a method is when a subclass provides an alternative
+implementation of an existing method with the same parameters such that the new version of the
+method effectively replaces the implementation from the base class.
+
+
+3) We chose to have FixedLengthQueue extend ArrayQueue because the ArrayQueue already has the
+concept of size. The main difference between the ArrayQueue implementation and the FixedLengthQueue
+implementation is that the ArrayQueue implementation is designed to resize the underlying array if
+its capacity is exceeded. The FixedLengthQueue, however, uses the existing enqueue method, but
+adds additional logic to prevent new items from being added to the queue if they would cause the
+base class's enqueue method to resize the underlying array. Instead, it increments the drop counter
+and does not call the base class's enqueue method to enqueue the new item.
+
+Extending the LinkedQueue class could also be made to work, however, you would need to add the
+concept of a maximum capacity to the FixedLengthQueue and check against that before invoking the
+base class's enqueue method.
+
+
+4)
+
+public class FixedLengthQueue<E> extends ArrayQueue<E> {
+  private int drops;
+
+  public FixedLengthQueue(int capacity) {
+    super(capacity);
+  }
+
+  @Override
+  public void enqueue(E item) {
+    if(size() == getCapacity()) {
+      drops += 1;
+    } else {
+      super.enqueue(item);
+    }
+  }
+
+  public int drops() {
+    return drops;
+  }
+}
+
+
+5a) Inheritance would be appropriate with the Person being the base class and Employee being the
+subclass.
+
+5b) Composition would be appropriate with the Department including a collection of Employee objects
+as an attribute.
+
+5c) Although some may be tempted to represent this with inheritance, I would suggesting creating
+an enumeration representing the title of the employee, or perhaps a role, to represent the type
+of employee that this represents. The Employee would then have this title or role enumeration, or
+perhaps a collection of them, using composition.
+
+5d) Inheritance would be appropriate here with a Shape being the base class and Sphere being the
+subclass.
+
+5e) Neither inheritance nor composition would be appropriate here directly. Both the Cube class and
+Sphere class would be subclasses of the Shape class. So they would be siblings in the inheritance
+heirarchy rather than parents or children of each other.
+
+
+6)
+
+public static void main(String[] args) {
+  Queue<Integer> fixedLengthIntegerQueue = new FixedLengthQueue<>(3);
+
+  fixedLengthIntegerQueue.enqueue(1);
+  fixedLengthIntegerQueue.enqueue(2);
+  fixedLengthIntegerQueue.enqueue(3);
+  fixedLengthIntegerQueue.enqueue(4);
+  fixedLengthIntegerQueue.enqueue(5);
+
+  System.out.println("Drops: " + ((FixedLengthQueue<Integer>) fixedLengthIntegerQueue).drops());
+
+
+  Queue<Double> fixedLengthDoubleQueue = new FixedLengthQueue<>(3);
+
+  fixedLengthDoubleQueue.enqueue(1.0);
+  fixedLengthDoubleQueue.enqueue(2.0);
+  fixedLengthDoubleQueue.enqueue(3.0);
+  fixedLengthDoubleQueue.enqueue(4.0);
+  fixedLengthDoubleQueue.enqueue(5.0);
+
+  System.out.println("Drops: " + ((FixedLengthQueue<Double>) fixedLengthDoubleQueue).drops());
+
+
+  Queue<String> fixedLengthStringQueue = new FixedLengthQueue<>(3);
+
+  fixedLengthStringQueue.enqueue("A");
+  fixedLengthStringQueue.enqueue("B");
+  fixedLengthStringQueue.enqueue("C");
+  fixedLengthStringQueue.enqueue("D");
+  fixedLengthStringQueue.enqueue("E");
+
+  System.out.println("Drops: " + ((FixedLengthQueue<String>) fixedLengthStringQueue).drops());
+}
+
+
+7a) The time complexity of the dequeue method remains the same as before since it did not change,
+O(1).
+
+7b) The enqueue method is the same except for the addition of a single extra step to compare the
+current size with the capacity. This is still a fixed number of steps and therefore O(1).
+
+7c) The time complexity of the isEmpty() method remains the same as before since it did not change,
+O(1).
+
+7d) The time complexity of the isEmpty() method remains the same as before since it did not change,
+O(1).
+
+7d) The time complexity of the size() method remains the same as before since it did not change,
+O(1).
+
+
+8) The code shown will not compile because the Queue interface does not have a drops() method. In
+order to fix this there are 3 options:
+
+  - Downcast the q identifer to a FixedLengthQueue when calling the drops method.
+  - Change the declaration of q to be to a FixedLengthQueue instead of a Queue.
+  - Create a new interface called FixedLengthQueue and make this current implementation a
+    FixedLengthArrayQueue, and change the current declaration of q from being a Queue to being a
+    FixedLengthQueue.
+
+

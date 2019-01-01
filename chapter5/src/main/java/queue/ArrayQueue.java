@@ -124,6 +124,10 @@ public class ArrayQueue<E> implements Queue<E> {
     }
   }
 
+  protected int getCapacity() {
+    return data.length;
+  }
+
   private void resizeArray(int newCapacity) {
     E[] newData = allocateArray(newCapacity);
 
