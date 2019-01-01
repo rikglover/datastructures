@@ -5,6 +5,7 @@
   - A new constructor, FixedLengthQueue
   - A new drops() method
 
+** Is the new constructor a new method?? The book seems to indicate no **
 
 1c) The enqueue method is the only one that has been overriden.
 
@@ -28,28 +29,26 @@ concept of a maximum capacity to the FixedLengthQueue and check against that bef
 base class's enqueue method.
 
 
-4)
+4a)
 
-public class FixedLengthQueue<E> extends ArrayQueue<E> {
-  private int drops;
-
-  public FixedLengthQueue(int capacity) {
-    super(capacity);
-  }
-
-  @Override
-  public void enqueue(E item) {
-    if(size() == getCapacity()) {
-      drops += 1;
-    } else {
-      super.enqueue(item);
-    }
-  }
-
-  public int drops() {
-    return drops;
-  }
+public ArrayQueue() {
+  this(DEFAULT_CAPACITY);
 }
+
+public ArrayQueue(int capacity) {
+  data = allocateArray(capacity);
+}
+
+4b)
+
+I chose to simply implement a protected getCapacity() method instead of making the attributes
+themselves protected:
+
+protected int getCapacity() {
+  return data.length;
+}
+
+The Size() method is already public, so it doesn't need to be made protected.
 
 
 5a) Inheritance would be appropriate with the Person being the base class and Employee being the
@@ -58,10 +57,14 @@ subclass.
 5b) Composition would be appropriate with the Department including a collection of Employee objects
 as an attribute.
 
+** The author also indicates that it could go the other way as well. An Employee could have a Department **
+
 5c) Although some may be tempted to represent this with inheritance, I would suggesting creating
 an enumeration representing the title of the employee, or perhaps a role, to represent the type
 of employee that this represents. The Employee would then have this title or role enumeration, or
 perhaps a collection of them, using composition.
+
+** The author indicated the use of inheritance. However, as I indicated above I don't think this is best **
 
 5d) Inheritance would be appropriate here with a Shape being the base class and Sphere being the
 subclass.
@@ -117,7 +120,7 @@ current size with the capacity. This is still a fixed number of steps and theref
 7c) The time complexity of the isEmpty() method remains the same as before since it did not change,
 O(1).
 
-7d) The time complexity of the isEmpty() method remains the same as before since it did not change,
+7d) The time complexity of the peek() method remains the same as before since it did not change,
 O(1).
 
 7d) The time complexity of the size() method remains the same as before since it did not change,
@@ -133,4 +136,27 @@ order to fix this there are 3 options:
     FixedLengthArrayQueue, and change the current declaration of q from being a Queue to being a
     FixedLengthQueue.
 
+** The author indicates that the second option is the solution. The other 2 options would work though **
 
+9)
+
+public class FixedLengthStack<E> extends ArrayStack<E> {
+  private int drops;
+
+  public FixedLengthStack(int capacity) {
+    super(capacity);
+  }
+
+  @Override
+  public void push(E item) {
+    if (size() == getCapacity()) {
+      drops += 1;
+    } else {
+      super.push(item);
+    }
+  }
+
+  public int drops() {
+    return drops;
+  }
+}
