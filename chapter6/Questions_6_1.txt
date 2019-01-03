@@ -1,0 +1,134 @@
+1a)
+
+Method Call       Return Value        List Contents
+---------------------------------------------------
+items.add(5)                          5
+items.add(8)                          5 8
+items.add(3)                          5 8 3
+items.removeAt(1)            8        5 3
+items.add(10)                         5 3 10
+items.add(4)                          5 3 10 4
+items.removeAt(3)            4        5 3 10
+items.removeAt(1)            3        5 10
+
+
+
+1b)
+
+Method Call       Return Value        List Contents
+---------------------------------------------------
+items.add(1)                          1
+items.set(0, 2)              1        2
+items.add(3)                          2 3
+items.set(0, 4)              2        4 3
+items.set(1, 5)              3        4 5
+items.add(6)                          4 5 6
+items.removeAt(1)            5        4 6
+items.get(1)                 6        4 6
+
+
+1c)
+
+Method Call       Return Value        List Contents
+---------------------------------------------------
+items.add(10)                         10
+items.add(0, 20)                      20 10
+items.add(1, 30)                      20 30 10
+items.add(0, 40)                      40 20 30 10
+items.add(0, 40)                      40 40 20 30 10
+items.add(2, 50)                      40 40 50 20 30 10
+items.indexOf(10)            5        40 40 50 20 30 10
+items.indexOf(20)            3        40 40 50 20 30 10
+items.indexOf(30)            4        40 40 50 20 30 10
+
+
+2)
+
+Method Call       Return Value          List Contents
+-----------------------------------------------------
+                                      1 7 2 4 1 8 9 7
+items.size()                 8        1 7 2 4 1 8 9 7
+items.get(3)                 4        1 7 2 4 1 8 9 7
+items.indexOf(7)             1        1 7 2 4 1 8 9 7
+items.removeAt(5)            8        1 7 2 4 1 9 7
+items.add(0, 3)                       3 1 7 2 4 1 9 7
+items.add(2, 5)                       3 1 5 7 2 4 1 9 7
+items.removeAt(1)            1        3 5 7 2 4 1 9 7
+
+List: 3 5 7 2 4 1 9 7
+
+
+3a) A list could be acceptable for this use-case as it allows for random access to the elements. A
+linked list, that allows for constant time removal would probably be the best implementation,
+however, as an array based list would require O(n) to remove items in the middle of the  list.
+
+3b) Although a list could be used for this purpose as the code could use it like a queue, where
+items are added to the end of the list and removed from the front, without knowing how the list was
+implemented one could not say whether or not this would be efficient. A queue, however, properly
+implemented, would always be efficient for this use-case so a queue would be a better choice.
+
+3c) A list could be acceptable in this case. Items would simply be added to the end of the list
+and then removed from the end of the list. Both accesses would be O(1), which is just as good as
+a Stack. We would essentially just be using the list like a stack in this case though.
+
+3d) Although a list could be used for this purpose as the code could use it like a queue, where
+items are added to the end of the list and removed from the front, without knowing how the list was
+implemented one could not say whether or not this would be efficient. A queue, however, properly
+implemented, would always be efficient for this use-case so a queue would be a better choice.
+
+3e) This would be an appropriate use case for a list as a list allows for random access of the
+elements, whereas other data structures like a stack and queue do not.
+
+
+4)
+
+public interface List<E> {
+
+  void add(E item);
+
+  void add(int index, E item);
+
+  E get(int index);
+
+  int indexOf(E item);
+
+  boolean isEmpty();
+
+  E removeAt(int index);
+
+  E set(int index, E item);
+
+  int size();
+}
+
+
+5a)
+
+List<Integer> items = new ArrayList<>();
+
+for(int i = 0; i < 10; i++) {
+  items.add(i);
+}
+
+5b)
+
+List<Integer> items = new ArrayList<>();
+
+for(int i = 0; i < 10; i++) {
+  items.add(0, i);
+}
+
+
+6) A stack can be implemented with a List ADT by always adding and removing at the end of the
+list. Because there are no elements after the last element of the list there will never be a need
+to shift anything.
+
+7) A queue cannot be implemented with a list ADT without shifting because although items can be
+added to the end of the list, when you remove them from the other end of the list they will need to
+atleast logically be shifted.
+
+
+
+
+
+
