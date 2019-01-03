@@ -35,11 +35,12 @@ items.add(10)                         10
 items.add(0, 20)                      20 10
 items.add(1, 30)                      20 30 10
 items.add(0, 40)                      40 20 30 10
-items.add(0, 40)                      40 40 20 30 10
-items.add(2, 50)                      40 40 50 20 30 10
-items.indexOf(10)            5        40 40 50 20 30 10
-items.indexOf(20)            3        40 40 50 20 30 10
-items.indexOf(30)            4        40 40 50 20 30 10
+items.add(2, 50)                      40 20 50 30 10
+items.indexOf(10)            4        40 20 50 30 10
+items.indexOf(20)            1        40 20 50 30 10
+items.indexOf(30)            3        40 20 50 30 10
+
+** I copied this problem down wrong so I had to re-do it **
 
 
 2)
@@ -71,6 +72,8 @@ implemented, would always be efficient for this use-case so a queue would be a b
 and then removed from the end of the list. Both accesses would be O(1), which is just as good as
 a Stack. We would essentially just be using the list like a stack in this case though.
 
+** The author indicates the answer is "not specifically". **
+
 3d) Although a list could be used for this purpose as the code could use it like a queue, where
 items are added to the end of the list and removed from the front, without knowing how the list was
 implemented one could not say whether or not this would be efficient. A queue, however, properly
@@ -83,21 +86,13 @@ elements, whereas other data structures like a stack and queue do not.
 4)
 
 public interface List<E> {
-
   void add(E item);
-
   void add(int index, E item);
-
   E get(int index);
-
   int indexOf(E item);
-
   boolean isEmpty();
-
   E removeAt(int index);
-
   E set(int index, E item);
-
   int size();
 }
 
