@@ -1,0 +1,123 @@
+1a)
+
+2) See ArrayList.java for details.
+
+My answer was correct accept for these 3 issues, which are not big deals.
+
+- The order of the parameters for the call to add(item, size) was backwards. Should be
+  add(size, item).
+
+- I forgot to return the result in the remove(E item) method definition.
+
+- The actual implementation of ArrayList in java does not throw an NPE if you pass the methods a
+  null object as an item to work on. I.E. add(null) does not cause an NPE. My version did, which
+  resulted in a few minor other differences. But they are now updated in my ArrayList implementation.
+
+The class starts out as follows:
+
+public class ArrayList<E> implements List<E> {
+
+  private static final int INITIAL_CAPACITY = 10;
+  private static final int RESIZE_FACTOR = 2;
+
+  private E[] data;
+
+  private int size;
+
+  public ArrayList() {
+    this(INITIAL_CAPACITY);
+  }
+
+  public ArrayList(int capacity) {
+    data = allocateArray(capacity);
+  }
+
+  ...
+}
+
+2a)
+
+@Override
+public void add(E item) {
+  add(size, item);
+}
+
+@Override
+public void add(int index, E item) {
+  if(index < 0 || index > size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  if(size == data.length) {
+    resize();
+  }
+
+  System.arraycopy(data, index, data, index + 1, size - index);
+  data[index] = item;
+  size += 1;
+}
+
+2b)
+
+@Override
+public E get(int index) {
+  if(index < 0 || index >= size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  return data[index];
+}
+
+2c)
+
+@Override
+public int indexOf(E item) {
+  for(int i = 0; i < size; i++) {
+    if(Objects.equals(item, data[i])) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+2d)
+
+@Override
+public boolean isEmpty() {
+  return size == 0;
+}
+
+
+2e)
+
+@Override
+public E remove(int index) {
+  if(index < 0 || index >= size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  E result = data[index];
+
+  System.arraycopy(data, index + 1, data, index, size - index - 1);
+  data[size - 1] = null;
+  size -= 1;
+
+  return result;
+}
+
+2f)
+
+@Override
+public E set(int index, E item) {
+  if(index < 0 || index >= size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  E result = data[index];
+
+  data[index] = item;
+
+  return result;
+}
+
