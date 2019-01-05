@@ -113,7 +113,7 @@ public class ArrayListTest {
 
     list.List<Integer> list = new ArrayList<>();
 
-    for(int i = 0; i < 22; i++) {
+    for (int i = 0; i < 22; i++) {
       list.add(i);
     }
 
@@ -129,7 +129,7 @@ public class ArrayListTest {
     assertThat(list.get(0)).isEqualTo(1);
     assertThat(list.get(19)).isEqualTo(20);
 
-    for(int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
       assertThat(list.remove(10)).isEqualTo(11 + i);
     }
 

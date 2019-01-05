@@ -30,17 +30,19 @@ public class ArrayList<E> implements List<E> {
   }
 
   @Override
-  public void add(E item) {
+  public boolean add(E item) {
     add(size, item);
+
+    return true;
   }
 
   @Override
   public void add(int index, E item) {
-    if(index < 0 || index > size) {
+    if (index < 0 || index > size) {
       throw new IndexOutOfBoundsException();
     }
 
-    if(size == data.length) {
+    if (size == data.length) {
       resize();
     }
 
@@ -51,9 +53,7 @@ public class ArrayList<E> implements List<E> {
 
   @Override
   public E set(int index, E item) {
-    if(index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException();
-    }
+    rangeCheck(index);
 
     E result = data[index];
 
@@ -64,17 +64,15 @@ public class ArrayList<E> implements List<E> {
 
   @Override
   public E get(int index) {
-    if(index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException();
-    }
+    rangeCheck(index);
 
     return data[index];
   }
 
   @Override
   public int indexOf(E item) {
-    for(int i = 0; i < size; i++) {
-      if(Objects.equals(item, data[i])) {
+    for (int i = 0; i < size; i++) {
+      if (Objects.equals(item, data[i])) {
         return i;
       }
     }
@@ -83,17 +81,21 @@ public class ArrayList<E> implements List<E> {
   }
 
   @Override
-  public E remove(E item) {
+  public boolean remove(E item) {
     int index = indexOf(item);
 
-    return remove(index);
+    if (index == -1) {
+      return false;
+    }
+
+    remove(index);
+
+    return true;
   }
 
   @Override
   public E remove(int index) {
-    if(index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException();
-    }
+    rangeCheck(index);
 
     E result = data[index];
 
@@ -104,8 +106,14 @@ public class ArrayList<E> implements List<E> {
     return result;
   }
 
+  private void rangeCheck(int index) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException();
+    }
+  }
+
   private void resize() {
-    E[] newData = allocateArray(RESIZE_FACTOR*data.length);
+    E[] newData = allocateArray(RESIZE_FACTOR * data.length);
 
     System.arraycopy(data, 0, newData, 0, data.length);
     data = newData;

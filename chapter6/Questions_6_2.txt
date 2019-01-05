@@ -13,7 +13,12 @@ My answer was correct accept for these 3 issues, which are not big deals.
   null object as an item to work on. I.E. add(null) does not cause an NPE. My version did, which
   resulted in a few minor other differences. But they are now updated in my ArrayList implementation.
 
+- The actual implementation of ArrayList in java does not throw NoSuchElementException if the
+  remove(E item) method does not find the element to be returned. It returns false if the element
+  is not found and true if it is.
+
 The class starts out as follows:
+
 
 public class ArrayList<E> implements List<E> {
 

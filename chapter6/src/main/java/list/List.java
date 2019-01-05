@@ -2,7 +2,7 @@ package list;
 
 public interface List<E> {
 
-  void add(E item);
+  boolean add(E item);
 
   void add(int index, E item);
 
@@ -12,7 +12,7 @@ public interface List<E> {
 
   boolean isEmpty();
 
-  E remove(E item);
+  boolean remove(E item);
 
   E remove(int index);
 
