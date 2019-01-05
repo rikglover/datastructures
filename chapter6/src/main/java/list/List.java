@@ -12,7 +12,9 @@ public interface List<E> {
 
   boolean isEmpty();
 
-  E removeAt(int index);
+  E remove(E item);
+
+  E remove(int index);
 
   E set(int index, E item);
 
