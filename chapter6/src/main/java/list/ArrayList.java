@@ -3,7 +3,6 @@ package list;
 import java.util.Objects;
 
 public class ArrayList<E> implements List<E> {
-
   private static final int INITIAL_CAPACITY = 10;
   private static final int RESIZE_FACTOR = 2;
   private static final int DOWNSIZE_FACTOR = 4;
@@ -104,7 +103,7 @@ public class ArrayList<E> implements List<E> {
     data[size - 1] = null;
     size -= 1;
 
-    if(size <= data.length / DOWNSIZE_FACTOR && size > INITIAL_CAPACITY) {
+    if(size <= data.length / DOWNSIZE_FACTOR && data.length / RESIZE_FACTOR >= INITIAL_CAPACITY) {
       resize(data.length / RESIZE_FACTOR);
     }
 
