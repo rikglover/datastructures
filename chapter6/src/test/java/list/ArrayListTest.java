@@ -210,4 +210,20 @@ public class ArrayListTest {
 
     assertThat(list.toString()).isEqualTo("[ 1 2 null 4 5 ]");
   }
+
+  @Test
+  public void testToStringWithEmpty() {
+    list.List<Integer> list = new ArrayList<>();
+
+    assertThat(list.toString()).isEqualTo("[  ]");
+  }
+
+  @Test
+  public void testToStringWithOneITem() {
+    list.List<Integer> list = new ArrayList<>();
+
+    list.add(1);
+
+    assertThat(list.toString()).isEqualTo("[ 1 ]");
+  }
 }

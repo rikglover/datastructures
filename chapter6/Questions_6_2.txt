@@ -4,6 +4,12 @@ add method will perform the remaining logic of the add method as normal, assigni
 the element at the specific index in the array, which in this case is equal to size, and
 incrementing size by 1.
 
+** This is not correct. The add method doesn't look for the case where index == size. **
+
+** The add method looks for the case where size == data.length and resizes then **
+
+** In the case where index == size, the for loop is not executed. Only the next 2 instructions occur **
+
 2) See ArrayList.java for details.
 
 My answer was correct accept for these 3 issues, which are not big deals.
@@ -44,7 +50,7 @@ public class ArrayList<E> implements List<E> {
   ...
 }
 
-2a)
+2a)   ** The authors implementation of this is more efficient. See answer for question 3 **
 
 @Override
 public void add(E item) {
@@ -184,12 +190,15 @@ public E remove(int index) {
   data[size - 1] = null;
   size -= 1;
 
-  if(size <= data.length / DOWNSIZE_FACTOR && size > INITIAL_CAPACITY) {
+  if(size <= data.length / DOWNSIZE_FACTOR && data.length > INITIAL_CAPACITY) {
     resize(data.length / RESIZE_FACTOR);
   }
 
   return result;
 }
+
+** correction. I had size > INITIAL_CAPACITY and the author used data.length > INITIAL_CAPACITY **
+
 
 private void resize(int newCapacity) {
   if(newCapacity < size || newCapacity < INITIAL_CAPACITY) {
@@ -301,7 +310,7 @@ and therefore, O(1).
 8b) add(int index, E Item)
 
 The add method performs a range check (1 step) followed by a shift, which requires a number of steps
-that in the worst case is proportional to the size of the list, and then a single step to set the
+that is proportional to the size of the list, and then a single step to set the
 new item at the specified index and a single step to increment the size. Because the shift operation
 dominates the whole operation is therefore O(n).
 
@@ -329,8 +338,10 @@ the removeAt operation is O(n).
 
 8g) set()
 
-Set performs a range check (single step) and then assigns an index in the array a specific value.
-This is 2 steps, and therefore O(1).
+Set performs a range check (single step) and then assigns an index in the array a specific value and
+returns the old item. This is 3 steps, and therefore O(1).
+
+** forgot to return the old item. Not really consequential as it is still O(1) **
 
 8h) size()
 
