@@ -184,4 +184,30 @@ public class ArrayListTest {
     list.add(22);
     assertThat(list.get(21)).isEqualTo(22);
   }
+
+  @Test
+  public void testToString() {
+    list.List<Integer> list = new ArrayList<>();
+
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.add(4);
+    list.add(5);
+
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 5 ]");
+  }
+
+  @Test
+  public void testToStringWithNulls() {
+    list.List<Integer> list = new ArrayList<>();
+
+    list.add(1);
+    list.add(2);
+    list.add(null);
+    list.add(4);
+    list.add(5);
+
+    assertThat(list.toString()).isEqualTo("[ 1 2 null 4 5 ]");
+  }
 }

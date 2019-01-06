@@ -1,4 +1,8 @@
-1a)
+1a) The add method specifically looks for the case where the index parameter equals size and
+doubles the size of the array in order to make room for additional elements. After resizing, the
+add method will perform the remaining logic of the add method as normal, assigning the new item to
+the element at the specific index in the array, which in this case is equal to size, and
+incrementing size by 1.
 
 2) See ArrayList.java for details.
 
@@ -125,4 +129,232 @@ public E set(int index, E item) {
 
   return result;
 }
+
+
+3)
+
+Method 1
+--------
+
+@Override
+public void add(E item) {
+  if(size == data.length) {
+    resize();
+  }
+
+  data[size++] = item;
+}
+
+Method 2
+--------
+
+@Override
+public void add(E item) {
+  add(size, item);
+}
+
+@Override
+public void add(int index, E item) {
+  if(index < 0 || index > size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  if(size == data.length) {
+    resize();
+  }
+
+  System.arraycopy(data, index, data, index + 1, size - index);
+  data[index] = item;
+  size += 1;
+}
+
+The two methods are functionally equivalent. However, method 1 is preferable because it is more
+efficient as there is no need to perform the range check or to perform the shift.
+
+
+4)
+
+@Override
+public E remove(int index) {
+  rangeCheck(index);
+
+  E result = data[index];
+
+  System.arraycopy(data, index + 1, data, index, size - index - 1);
+  data[size - 1] = null;
+  size -= 1;
+
+  if(size <= data.length / DOWNSIZE_FACTOR && size > INITIAL_CAPACITY) {
+    resize(data.length / RESIZE_FACTOR);
+  }
+
+  return result;
+}
+
+private void resize(int newCapacity) {
+  if(newCapacity < size || newCapacity < INITIAL_CAPACITY) {
+    throw new IllegalArgumentException("newCapacity too small");
+  }
+
+  E[] newData = allocateArray(newCapacity);
+
+  System.arraycopy(data, 0, newData, 0, size);
+  data = newData;
+}
+
+5)
+
+@Override
+public String toString() {
+  StringBuilder builder = new StringBuilder("[ ");
+
+  for(int i = 0; i < size; i++) {
+    String itemString = Objects.toString(data[i]);
+
+    builder.append(itemString);
+
+    if(i < size - 1) {
+      builder.append(" ");
+    }
+  }
+
+  builder.append(" ]");
+
+  return builder.toString();
+}
+
+6) Because we are using a generic type, the type must extend Object, which has a toString method.
+Therefore, we know that every item will have a toString method. The only exception, is null, which
+our ArrayList allows. Therefore, we either need to check for null ourselves, or use one of the
+built in methods that will correctly handle null, such as Objects.toString().
+
+7)
+
+public static void main(String[] args) {
+  List<Integer> integerList = new ArrayList<>();
+
+  for(int i = 0; i < 5; i++) {
+    integerList.add(i);
+    System.out.println("item i: " + integerList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(integerList);
+  System.out.println();
+
+  while(!integerList.isEmpty()) {
+    System.out.println(integerList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + integerList.size());
+  System.out.println();
+
+
+  List<Double> doubleList = new ArrayList<>();
+
+  for(int i = 0; i < 5; i++) {
+    doubleList.add((double) i);
+    System.out.println("item i: " + doubleList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(doubleList);
+  System.out.println();
+
+  while(!doubleList.isEmpty()) {
+    System.out.println(doubleList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + doubleList.size());
+  System.out.println();
+
+
+  List<String> stringList = new ArrayList<>();
+
+  for(int i = 0; i < 5; i++) {
+    stringList.add(String.valueOf(i));
+    System.out.println("item i: " + stringList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(stringList);
+  System.out.println();
+
+  while(!stringList.isEmpty()) {
+    System.out.println(stringList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + stringList.size());
+  System.out.println();
+}
+
+
+8b) add(E item)
+
+When adding at the end of the list it is only necessary to perform a range check, set a single
+item into the array at the index equal to size, and increment the size of the list. This is 3 steps
+and therefore, O(1).
+
+8b) add(int index, E Item)
+
+The add method performs a range check (1 step) followed by a shift, which requires a number of steps
+that in the worst case is proportional to the size of the list, and then a single step to set the
+new item at the specified index and a single step to increment the size. Because the shift operation
+dominates the whole operation is therefore O(n).
+
+8c) get()
+
+The get method simply performs a range check and then returns the item at the index specified. This
+is 2 steps, and therefore O(1).
+
+8d) indexOf()
+
+The indexOf method must traverse the array up to the size of it in order to perform a linear search
+to find the item specified. The number of items that need to be checked is proportional to the size
+of the list and therefore, O(n).
+
+8e) isEmpty()
+
+isEmpty() simply compares the size to 0. This is 1 step and therefore O(1).
+
+8f) removeAt()
+
+Removing at a specific index requires a rangeCheck, a single step to save off the item being removed,
+a shift operation to shift the items over 1 element to the left, and 3 steps to set the last item
+to null, decrement size and return the item removed. The O(n) shift operation dominates and therefore
+the removeAt operation is O(n).
+
+8g) set()
+
+Set performs a range check (single step) and then assigns an index in the array a specific value.
+This is 2 steps, and therefore O(1).
+
+8h) size()
+
+size simply returns the size property. This is one step and therefore O(1).
+
+
+9a) Because the call to size() and get() are O(1), they can be treated like a single step. However,
+because there is a loop that runs over the entirety of the size of the list, the whole code fragment
+is O(n).
+
+9b) The call to isEmpty() is O(1), therefore it can be simply be considered as a single step. However,
+the removeAt() call is O(n). Additionally, because it is called within a loop that runs over the
+entirety of the list, there are n * n possible System.out.println calls. This is O(n^2).
+
+9c) The call to isEmpty() is O(1), therefore it can be simply be considered as a single step. However,
+the removeAt() call is O(n) normally. However, this is a special case where it is removing the item
+at the end of the list, which means the loop to perform the shift will never be entered. Therefore,
+it executes in constant time, just like the add(E item) method. This code is therefore O(n).
+
+
+10a) The add(E item) method is O(1) because no shifting is necessary. Because it is being performed
+in a loop, the whole code fragment is therefore O(n).
+
+10b) The add(index, E item) method is O(n) because of the need for shifting. In addition, it is
+being executed inside of a loop. Therefore, the whole code fragment is O(n^2).
+
 
