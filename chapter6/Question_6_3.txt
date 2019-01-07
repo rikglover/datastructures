@@ -3,6 +3,14 @@ logical index within the list. In this case, what is needed is a way to get the 
 and prev attributes of a given node, which correspond to the next and previous links in the linked
 list. Therefore the getNode() method cannot be used in this case.
 
+** This is not quite correct. It could be used by simply getting the index + 1 and - 1 of the **
+** index node. However, each call to getNode is O(n), requiring a full traversal, which is not **
+** necessary since we already have next and previous links. Therefore, it is best not to use **
+** getNode in this case. **
+
+** In my defense, it did not even occur to me that one might consider that for that very reason **
+** Having said that, in retrospect, the question did quite clearly ask if it COULD be done **
+
 2) In the case where we are deleting the last item in the list, the next field of the last node will
 be null. Although we will still want to set the prev.next field to null to indicate that it is now
 the last item in the list, we will not want to set the next.prev field to anything, because the next
@@ -12,3 +20,145 @@ anything to the current next anyway so the if-statement simply checks for this c
 the statement that sets next.prev = prev in this case.
 
 3)
+
+@Override
+public E remove(int index) {
+  rangeCheck(index);
+
+  Node<E> p = getNode(index);
+  E result = p.getData();
+
+  p.getPrev().setNext(p.getNext());
+
+  if (p.getNext() != null) {
+    p.getNext().setPrev(p.getPrev());
+  }
+
+  size -= 1;
+
+  return result;
+}
+
+
+4)
+
+public class LinkedList<E> implements List<E> {
+  private static final String SPACE = " ";
+  private static final String OPEN_BRACKET = "[";
+  private static final String CLOSED_BRACKET = "]";
+
+  private Node<E> head = new Node<>();
+
+  private int size = 0;
+
+  ...
+}
+
+4a)
+
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+private static class Node<T> {
+  private T data;
+
+  private Node<T> next;
+  private Node<T> prev;
+}
+
+4b)
+
+@Override
+public boolean add(E item) {
+  Node<E> p = getNode(size - 1);
+  Node<E> newNode = new Node<>(item, null, p);
+
+  p.setNext(newNode);
+  size += 1;
+
+  return true;
+}
+
+4c)
+
+@Override
+public void add(int index, E item) {
+  if (index < 0 || index > size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  if (index == size) {
+    add(item);
+  } else {
+    Node<E> p = getNode(index);
+    Node<E> newNode = new Node<>(item, p, p.getPrev());
+
+    p.getPrev().setNext(newNode);
+    p.setPrev(newNode);
+    size += 1;
+  }
+}
+
+
+4d)
+
+@Override
+public E get(int index) {
+  rangeCheck(index);
+
+  Node<E> p = getNode(index);
+
+  return p.getData();
+}
+
+4e)
+
+@Override
+public int indexOf(E item) {
+  int i = 0;
+
+  Node<E> p = head.getNext();
+
+  while (p != null) {
+    if (p.getData().equals(item)) {
+      return i;
+    }
+
+    p = p.getNext();
+    i += 1;
+  }
+
+  return -1;
+}
+
+4f)
+
+@Override
+public boolean isEmpty() {
+  return size == 0;
+}
+
+fg)
+
+@Override
+public E set(int index, E item) {
+  rangeCheck(index);
+
+  Node<E> p = getNode(index);
+
+  E result = p.getData();
+
+  p.setData(item);
+
+  return result;
+}
+
+4h)
+
+@Override
+public int size() {
+  return size;
+}
+
