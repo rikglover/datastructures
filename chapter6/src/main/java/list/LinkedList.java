@@ -68,11 +68,7 @@ public class LinkedList<E> implements List<E> {
 
   @Override
   public boolean add(E item) {
-    Node<E> p = getNode(size - 1);
-    Node<E> newNode = new Node<>(item, null, p);
-
-    p.setNext(newNode);
-    size += 1;
+    add(size, item);
 
     return true;
   }
@@ -83,16 +79,15 @@ public class LinkedList<E> implements List<E> {
       throw new IndexOutOfBoundsException();
     }
 
-    if (index == size) {
-      add(item);
-    } else {
-      Node<E> p = getNode(index);
-      Node<E> newNode = new Node<>(item, p, p.getPrev());
+    Node<E> prev = getNode(index - 1);
+    Node<E> newNode = new Node<>(item, prev.getNext(), prev);
 
-      p.getPrev().setNext(newNode);
-      p.setPrev(newNode);
-      size += 1;
+    if (prev.getNext() != null) {
+      prev.getNext().setPrev(newNode);
     }
+
+    prev.setNext(newNode);
+    size += 1;
   }
 
   @Override

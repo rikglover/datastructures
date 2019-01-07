@@ -162,3 +162,80 @@ public int size() {
   return size;
 }
 
+5)
+
+
+METHOD 1 - BY CALLING THE OTHER ADD
+-----------------------------------
+
+@Override
+public boolean add(E item) {
+  add(size, item);
+
+  return true;
+}
+
+@Override
+public void add(int index, E item) {
+  if (index < 0 || index > size) {
+    throw new IndexOutOfBoundsException();
+  }
+
+  Node<E> prev = getNode(index - 1);
+  Node<E> newNode = new Node<>(item, prev.getNext(), prev);
+
+  if (prev.getNext() != null) {
+    prev.getNext().setPrev(newNode);
+  }
+
+  prev.setNext(newNode);
+  size += 1;
+}
+
+METHOD 2 - FROM SCRATCH
+-----------------------
+
+@Override
+public boolean add(E item) {
+  Node<E> p = getNode(size - 1);
+  Node<E> newNode = new Node<>(item, null, p);
+
+  p.setNext(newNode);
+  size += 1;
+
+  return true;
+}
+
+COMPARISON
+----------
+
+Method 2 is superior because there is no need for the rangeCheck in this case. Additionally, there
+is no need for the check for the last node. So these 2 extra steps are skipped, which is a slight
+performance optimization. However, the best way to do this method (i.e. add(E item)) is by using
+a tail pointer. This would eliminate the need for the traversal to find the last node.
+
+
+6) I used a StringJoiner because it is more suitable for this case. It's pretty similar though.
+
+@Override
+public String toString() {
+  Node<E> p = head.getNext();
+
+  StringJoiner joiner = new StringJoiner(SPACE);
+
+  joiner.add(OPEN_BRACKET);
+
+  while(p != null) {
+    String dataString = p.getData().toString();
+
+    joiner.add(dataString);
+    p = p.getNext();
+  }
+
+  joiner.add(CLOSED_BRACKET);
+
+  return joiner.toString();
+}
+
+
+7)
