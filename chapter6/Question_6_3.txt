@@ -1,0 +1,14 @@
+1) The getNode() method is designed to return the Node in the list that corresponds to a particular
+logical index within the list. In this case, what is needed is a way to get the values of the next
+and prev attributes of a given node, which correspond to the next and previous links in the linked
+list. Therefore the getNode() method cannot be used in this case.
+
+2) In the case where we are deleting the last item in the list, the next field of the last node will
+be null. Although we will still want to set the prev.next field to null to indicate that it is now
+the last item in the list, we will not want to set the next.prev field to anything, because the next
+field is null and dererencing it would result in an NPE. Because the prev element will become the
+new last node in the list and it's next field has already been set to null it is not necessary to do
+anything to the current next anyway so the if-statement simply checks for this condition and skips
+the statement that sets next.prev = prev in this case.
+
+3)

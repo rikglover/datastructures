@@ -322,7 +322,7 @@ is 2 steps, and therefore O(1).
 8d) indexOf()
 
 The indexOf method must traverse the array up to the size of it in order to perform a linear search
-to find the item specified. The number of items that need to be checked is proportional to the size
+to find the item specified. The number of items that need to be checked is up to the size
 of the list and therefore, O(n).
 
 8e) isEmpty()
@@ -338,7 +338,7 @@ the removeAt operation is O(n).
 
 8g) set()
 
-Set performs a range check (single step) and then assigns an index in the array a specific value and
+Set performs a range check (single step) and then assigns an element in the array a specific value and
 returns the old item. This is 3 steps, and therefore O(1).
 
 ** forgot to return the old item. Not really consequential as it is still O(1) **
