@@ -239,3 +239,112 @@ public String toString() {
 
 
 7)
+
+public static void main(String[] args) {
+  List<Integer> integerList = new LinkedList<>();
+
+  for(int i = 0; i < 5; i++) {
+    integerList.add(i);
+    System.out.println("item " + i + ": " + integerList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(integerList);
+  System.out.println();
+
+  while(!integerList.isEmpty()) {
+    System.out.println(integerList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + integerList.size());
+  System.out.println();
+
+  List<Double> doubleList = new LinkedList<>();
+
+  for(int i = 0; i < 5; i++) {
+    doubleList.add((double) i);
+    System.out.println("item " + i + ": " + doubleList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(doubleList);
+  System.out.println();
+
+  while(!doubleList.isEmpty()) {
+    System.out.println(doubleList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + doubleList.size());
+  System.out.println();
+
+
+  List<String> stringList = new LinkedList<>();
+
+  for(int i = 0; i < 5; i++) {
+    stringList.add(String.valueOf(i));
+    System.out.println("item " + i + ": " + stringList.get(i));
+  }
+
+  System.out.println();
+  System.out.println(stringList);
+  System.out.println();
+
+  while(!stringList.isEmpty()) {
+    System.out.println(stringList.remove(0));
+  }
+
+  System.out.println();
+  System.out.println("Size: " + stringList.size());
+  System.out.println();
+}
+
+
+8a) add(E item) is O(n) because it has to do a full traversal to find the last node to insert after.
+
+8b) add(index, item) is O(n) because it has to search for the index node, which could potentially require
+a full traversal, in order to find the index node.
+
+8c) get(index) is O(n) because it has search for the index node, which could potentially require all
+nodes to be traversed.
+
+8d) indexOf(E item) is O(n) because it has to do a linear search for the item, which could potentially
+require all nodes to be traversed.
+
+8e) isEmpty() is O(1) because it only compares size to 0.
+
+8f) set(index, item) is O(n) because it has to search for the index node, which could potentially
+require a full traversal of the list.
+
+8g) size() is O(1) because it simply returns the size attribute.
+
+9) The ArrayList implementation is superior for the set, get and add(E item) methods because the
+array implementation allows for constant time access to the array elements, which allows these
+methods to be executed in O(1) time instead of O(n) like the LinkedList. In theory, the LinkedList
+implementation could be faster for add(index, item) and remove(index) (i.e. inserting and removing
+in the middle of the list) if it did not have to traverse the entire list just to find the index
+node. However, without using an iterator, we can't do that. Therefore, at this point the ArrayList
+method is generally preferable.
+
+10a) The get() method potentially requires a full traversal. It is within a loop that executes over
+the entire list. Therefore, the code fragment is O(n^2).
+
+10b) RemoveAt(0) is a special case of this implementation of the removeAt method that can be
+executed in constant time. However, it is being executed once for each item in the list. Therefore,
+the code fragment is O(n).
+
+10c) This implementation of hte removeAt(items.size() - 1) method requires a full traversal to
+get a handle on the index node of the last item in the list. Therefore, the removeAt method is O(n),
+even in this special case. In addition, this method is being called for each item in the list.
+Therefore, the code fragment is O(n^2).
+
+
+11a) The implementation of add(E item) from this text is O(n), because it traverses the entirety,
+of the list to find the last element. This code fragment performs a loop over n items where each
+loop performs an add. Therefore, this is O(n^2).
+
+11b) The add(0, item) method is a special case of the add method, in that it does not require a
+traversal to find the node to insert at because we are inserting at the head. Therefore it executes
+in constant time. However, it is being executed in a loop and therefore the code fragment is O(n).
+
