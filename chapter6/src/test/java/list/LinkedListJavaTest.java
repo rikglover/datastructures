@@ -1,7 +1,6 @@
 package list;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -293,5 +292,74 @@ public class LinkedListJavaTest {
     assertThat(list.toString()).isEqualTo("[ 2 3 4 ]");
     assertThat(list.remove(Integer.valueOf(3))).isTrue();
     assertThat(list.toString()).isEqualTo("[ 2 4 ]");
+  }
+
+  @Test
+  public void testAndAndRemoveAtBeginningAndEnd() {
+    List<Integer> list = new LinkedListJava<>();
+
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.add(4);
+
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 ]");
+
+    list.add(4, 5);
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 5 ]");
+
+    list.add(5, 6);
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 5 6 ]");
+
+    list.remove(5);
+    list.remove(4);
+
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 ]");
+
+    list.remove(0);
+
+    assertThat(list.toString()).isEqualTo("[ 2 3 4 ]");
+
+    list.add(0, 1);
+    assertThat(list.toString()).isEqualTo("[ 1 2 3 4 ]");
+
+    list.add(0, 0);
+    assertThat(list.toString()).isEqualTo("[ 0 1 2 3 4 ]");
+
+    list.remove(0);
+    list.remove(0);
+
+    assertThat(list.toString()).isEqualTo("[ 2 3 4 ]");
+
+    list.remove(2);
+
+    assertThat(list.toString()).isEqualTo("[ 2 3 ]");
+
+    list.remove(1);
+
+    assertThat(list.toString()).isEqualTo("[ 2 ]");
+
+    list.remove(0);
+
+    assertThat(list.toString()).isEqualTo("[ ]");
+    assertThat(list.isEmpty()).isTrue();
+
+    list.add(1);
+
+    assertThat(list.toString()).isEqualTo("[ 1 ]");
+
+    list.add(0, 0);
+
+    assertThat(list.toString()).isEqualTo("[ 0 1 ]");
+
+    list.add(2, 2);
+
+    assertThat(list.toString()).isEqualTo("[ 0 1 2 ]");
+
+    list.remove(1);
+
+    assertThat(list.toString()).isEqualTo("[ 0 2 ]");
+    assertThat(list.size()).isEqualTo(2);
+    assertThat(list.isEmpty()).isFalse();
   }
 }
