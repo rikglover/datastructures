@@ -11,8 +11,8 @@ public class LinkedListJava<E> implements List<E> {
   private static final String OPEN_BRACKET = "[";
   private static final String CLOSED_BRACKET = "]";
 
-  private Node<E> head = null;
-  private Node<E> tail = null;
+  private Node<E> head;
+  private Node<E> tail;
 
   private int size;
 
