@@ -31,7 +31,6 @@ public class LinkedListJava<E> implements List<E> {
     rangeCheck(index);
 
     Node<E> node = getNode(index);
-
     E result = node.getData();
 
     node.setData(item);
@@ -74,12 +73,13 @@ public class LinkedListJava<E> implements List<E> {
       add(item);
     } else {
       Node<E> currentNode = getNode(index);
-      Node<E> newNode = new Node<>(item, currentNode, currentNode.getPrev());
+      Node<E> prev = currentNode.getPrev();
+      Node<E> newNode = new Node<>(item, currentNode, prev);
 
       if (index == 0) {
         head = newNode;
       } else {
-        currentNode.getPrev().setNext(newNode);
+        prev.setNext(newNode);
       }
 
       currentNode.setPrev(newNode);
@@ -106,19 +106,21 @@ public class LinkedListJava<E> implements List<E> {
   public E remove(int index) {
     rangeCheck(index);
 
-    Node<E> currentNode = getNode(index);
-    E result = currentNode.getData();
+    Node<E> node = getNode(index);
+    Node<E> prev = node.getPrev();
+    Node<E> next = node.getNext();
+    E result = node.getData();
 
-    if (currentNode.getNext() != null) {
-      currentNode.getNext().setPrev(currentNode.getPrev());
+    if (prev != null) {
+      prev.setNext(next);
     } else {
-      tail = currentNode.getPrev();
+      head = next;
     }
 
-    if (currentNode.getPrev() != null) {
-      currentNode.getPrev().setNext(currentNode.getNext());
+    if (next != null) {
+      next.setPrev(prev);
     } else {
-      head = currentNode.getNext();
+      tail = prev;
     }
 
     size -= 1;
@@ -142,7 +144,6 @@ public class LinkedListJava<E> implements List<E> {
   @Override
   public String toString() {
     Node<E> p = head;
-
     StringJoiner joiner = new StringJoiner(SPACE);
 
     joiner.add(OPEN_BRACKET);
