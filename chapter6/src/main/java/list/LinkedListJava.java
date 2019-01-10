@@ -8,8 +8,8 @@ import lombok.Setter;
 
 public class LinkedListJava<E> implements List<E> {
   private static final String SPACE = " ";
-  private static final String OPEN_BRACKET = "[";
-  private static final String CLOSED_BRACKET = "]";
+  private static final String OPEN_BRACKET = "[ ";
+  private static final String CLOSED_BRACKET = " ]";
 
   private Node<E> head;
   private Node<E> tail;
@@ -144,9 +144,7 @@ public class LinkedListJava<E> implements List<E> {
   @Override
   public String toString() {
     Node<E> p = head;
-    StringJoiner joiner = new StringJoiner(SPACE);
-
-    joiner.add(OPEN_BRACKET);
+    StringJoiner joiner = new StringJoiner(SPACE, OPEN_BRACKET, CLOSED_BRACKET);
 
     while (p != null) {
       String dataString = p.getData().toString();
@@ -154,8 +152,6 @@ public class LinkedListJava<E> implements List<E> {
       joiner.add(dataString);
       p = p.getNext();
     }
-
-    joiner.add(CLOSED_BRACKET);
 
     return joiner.toString();
   }

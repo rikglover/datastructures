@@ -189,7 +189,7 @@ public class LinkedListJavaTest {
 
     list.remove(0);
 
-    assertThat(list.toString()).isEqualTo("[ ]");
+    assertThat(list.toString()).isEqualTo("[  ]");
 
     list.add(1);
 
@@ -341,7 +341,7 @@ public class LinkedListJavaTest {
 
     list.remove(0);
 
-    assertThat(list.toString()).isEqualTo("[ ]");
+    assertThat(list.toString()).isEqualTo("[  ]");
     assertThat(list.isEmpty()).isTrue();
 
     list.add(1);
