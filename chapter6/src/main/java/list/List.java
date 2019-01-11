@@ -1,6 +1,6 @@
 package list;
 
-public interface List<E> {
+public interface List<E> extends Iterable<E> {
 
   boolean add(E item);
 

@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class ArrayList<E> implements List<E> {
@@ -17,6 +19,84 @@ public class ArrayList<E> implements List<E> {
 
   public ArrayList(int capacity) {
     data = allocateArray(capacity);
+  }
+
+  public static void main(String[] args) {
+    List<Integer> integerList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      integerList.add(i);
+      System.out.println("item i: " + integerList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(integerList);
+    System.out.println();
+
+    while (!integerList.isEmpty()) {
+      System.out.println(integerList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + integerList.size());
+    System.out.println();
+
+    List<Double> doubleList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      doubleList.add((double) i);
+      System.out.println("item i: " + doubleList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(doubleList);
+    System.out.println();
+
+    while (!doubleList.isEmpty()) {
+      System.out.println(doubleList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + doubleList.size());
+    System.out.println();
+
+    List<String> stringList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      stringList.add(String.valueOf(i));
+      System.out.println("item i: " + stringList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(stringList);
+    System.out.println();
+
+    while (!stringList.isEmpty()) {
+      System.out.println(stringList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + stringList.size());
+    System.out.println();
+
+    list.List<Integer> iteratorList = new ArrayList<>();
+
+    iteratorList.add(1);
+    iteratorList.add(2);
+    iteratorList.add(3);
+    iteratorList.add(4);
+    iteratorList.add(5);
+
+    for (int i : iteratorList) {
+      System.out.println("iteratorList: " + i);
+    }
+
+    System.out.println();
+    System.out.println();
+
+    for (int j : iteratorList) {
+      System.out.println("iteratorList: " + j);
+    }
   }
 
   @Override
@@ -103,7 +183,7 @@ public class ArrayList<E> implements List<E> {
     data[size - 1] = null;
     size -= 1;
 
-    if(size <= data.length / DOWNSIZE_FACTOR && data.length / RESIZE_FACTOR >= INITIAL_CAPACITY) {
+    if (size <= data.length / DOWNSIZE_FACTOR && data.length / RESIZE_FACTOR >= INITIAL_CAPACITY) {
       resize(data.length / RESIZE_FACTOR);
     }
 
@@ -114,12 +194,12 @@ public class ArrayList<E> implements List<E> {
   public String toString() {
     StringBuilder builder = new StringBuilder("[ ");
 
-    for(int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
       String itemString = Objects.toString(data[i]);
 
       builder.append(itemString);
 
-      if(i < size - 1) {
+      if (i < size - 1) {
         builder.append(" ");
       }
     }
@@ -129,6 +209,11 @@ public class ArrayList<E> implements List<E> {
     return builder.toString();
   }
 
+  @Override
+  public Iterator<E> iterator() {
+    return new ArrayListIterator();
+  }
+
   private void rangeCheck(int index) {
     if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException();
@@ -136,7 +221,7 @@ public class ArrayList<E> implements List<E> {
   }
 
   private void resize(int newCapacity) {
-    if(newCapacity < size || newCapacity < INITIAL_CAPACITY) {
+    if (newCapacity < size || newCapacity < INITIAL_CAPACITY) {
       throw new IllegalArgumentException("newCapacity too small");
     }
 
@@ -151,64 +236,25 @@ public class ArrayList<E> implements List<E> {
     return (E[]) new Object[capacity];
   }
 
-  public static void main(String[] args) {
-    List<Integer> integerList = new ArrayList<>();
+  private class ArrayListIterator implements Iterator<E> {
+    private int nextIndex = 0;
 
-    for(int i = 0; i < 5; i++) {
-      integerList.add(i);
-      System.out.println("item i: " + integerList.get(i));
+    @Override
+    public boolean hasNext() {
+      return nextIndex < size;
     }
 
-    System.out.println();
-    System.out.println(integerList);
-    System.out.println();
+    @Override
+    public E next() {
+      if (!hasNext()) {
+        throw new NoSuchElementException();
+      }
 
-    while(!integerList.isEmpty()) {
-      System.out.println(integerList.remove(0));
+      E result = data[nextIndex];
+
+      nextIndex += 1;
+
+      return result;
     }
-
-    System.out.println();
-    System.out.println("Size: " + integerList.size());
-    System.out.println();
-
-
-    List<Double> doubleList = new ArrayList<>();
-
-    for(int i = 0; i < 5; i++) {
-      doubleList.add((double) i);
-      System.out.println("item i: " + doubleList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(doubleList);
-    System.out.println();
-
-    while(!doubleList.isEmpty()) {
-      System.out.println(doubleList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + doubleList.size());
-    System.out.println();
-
-
-    List<String> stringList = new ArrayList<>();
-
-    for(int i = 0; i < 5; i++) {
-      stringList.add(String.valueOf(i));
-      System.out.println("item i: " + stringList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(stringList);
-    System.out.println();
-
-    while(!stringList.isEmpty()) {
-      System.out.println(stringList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + stringList.size());
-    System.out.println();
   }
 }

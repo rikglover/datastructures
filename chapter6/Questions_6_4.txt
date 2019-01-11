@@ -1,0 +1,116 @@
+1. The linked list iterator allows for traversing the list in linear time because you do not have
+to start over every time you invoke the get method in order to find the element in question. You
+simply follow the next pointers from one node in the list to the next.
+
+2)
+
+public interface List<E> extends Iterable<E> {
+
+...
+
+}
+
+3)
+
+// add this method
+
+@Override
+public Iterator<E> iterator() {
+  return new LinkedListIterator();
+}
+
+
+// Iterator definition as inner class
+private class LinkedListIterator implements Iterator<E> {
+  private Node<E> next = head.getNext();
+
+  @Override
+  public boolean hasNext() {
+    return next != null;
+  }
+
+  @Override
+  public E next() {
+    if(!hasNext()) {
+      throw new NoSuchElementException();
+    }
+
+    E result = next.getData();
+
+    next = next.getNext();
+
+    return result;
+  }
+}
+
+// test it in main
+
+list.List<Integer> iteratorList = new LinkedList<>();
+
+iteratorList.add(1);
+iteratorList.add(2);
+iteratorList.add(3);
+iteratorList.add(4);
+
+for(int i : iteratorList) {
+  System.out.println("IteratorList element : " + i);
+}
+
+4) An advantage of supporting the Iterable interface is to be able to use the enhanced for loop as
+well as to be able to this class in any place where an Iterable would be accepted which allows for
+enhanced programming to an interface rather than an implementation.
+
+5)
+
+// Add this method
+
+@Override
+public Iterator<E> iterator() {
+  return new ArrayListIterator();
+}
+
+
+// add this inner class
+private class ArrayListIterator implements Iterator<E> {
+  private int nextIndex = 0;
+
+  @Override
+  public boolean hasNext() {
+    return nextIndex < size;
+  }
+
+  @Override
+  public E next() {
+    if(!hasNext()) {
+      throw new NoSuchElementException();
+    }
+
+    E result = data[nextIndex];
+
+    nextIndex += 1;
+
+    return result;
+  }
+}
+
+
+// test it in main
+list.List<Integer> iteratorList = new ArrayList<>();
+
+iteratorList.add(1);
+iteratorList.add(2);
+iteratorList.add(3);
+iteratorList.add(4);
+iteratorList.add(5);
+
+for(int i : iteratorList) {
+  System.out.println("iteratorList: " + i);
+}
+
+System.out.println();
+System.out.println();
+
+for(int j : iteratorList) {
+  System.out.println("iteratorList: " + j);
+}
+

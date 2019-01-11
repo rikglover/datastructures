@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +17,86 @@ public class LinkedList<E> implements List<E> {
   private Node<E> head = new Node<>();
 
   private int size = 0;
+
+  public static void main(String[] args) {
+    List<Integer> integerList = new LinkedList<>();
+
+    for (int i = 0; i < 5; i++) {
+      integerList.add(i);
+      System.out.println("item " + i + ": " + integerList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(integerList);
+    System.out.println();
+
+    while (!integerList.isEmpty()) {
+      System.out.println(integerList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + integerList.size());
+    System.out.println();
+
+    List<Double> doubleList = new LinkedList<>();
+
+    for (int i = 0; i < 5; i++) {
+      doubleList.add((double) i);
+      System.out.println("item " + i + ": " + doubleList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(doubleList);
+    System.out.println();
+
+    while (!doubleList.isEmpty()) {
+      System.out.println(doubleList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + doubleList.size());
+    System.out.println();
+
+    List<String> stringList = new LinkedList<>();
+
+    for (int i = 0; i < 5; i++) {
+      stringList.add(String.valueOf(i));
+      System.out.println("item " + i + ": " + stringList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(stringList);
+    System.out.println();
+
+    while (!stringList.isEmpty()) {
+      System.out.println(stringList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + stringList.size());
+    System.out.println();
+    System.out.println();
+
+    list.List<Integer> iteratorList = new LinkedList<>();
+
+    iteratorList.add(1);
+    iteratorList.add(2);
+    iteratorList.add(3);
+    iteratorList.add(4);
+
+    for (int i : iteratorList) {
+      System.out.println("IteratorList element : " + i);
+    }
+
+    Iterator<Integer> iterator = iteratorList.iterator();
+
+    iterator.next();
+    iterator.remove();
+
+    for (int i : iteratorList) {
+      System.out.println("IteratorList element : " + i);
+    }
+  }
 
   @Override
   public int size() {
@@ -129,7 +211,7 @@ public class LinkedList<E> implements List<E> {
 
     joiner.add(OPEN_BRACKET);
 
-    while(p != null) {
+    while (p != null) {
       String dataString = p.getData().toString();
 
       joiner.add(dataString);
@@ -139,6 +221,11 @@ public class LinkedList<E> implements List<E> {
     joiner.add(CLOSED_BRACKET);
 
     return joiner.toString();
+  }
+
+  @Override
+  public Iterator<E> iterator() {
+    return new LinkedListIterator();
   }
 
   private void rangeCheck(int index) {
@@ -169,63 +256,25 @@ public class LinkedList<E> implements List<E> {
     private Node<T> prev;
   }
 
-  public static void main(String[] args) {
-    List<Integer> integerList = new LinkedList<>();
+  private class LinkedListIterator implements Iterator<E> {
+    private Node<E> next = head.getNext();
 
-    for(int i = 0; i < 5; i++) {
-      integerList.add(i);
-      System.out.println("item " + i + ": " + integerList.get(i));
+    @Override
+    public boolean hasNext() {
+      return next != null;
     }
 
-    System.out.println();
-    System.out.println(integerList);
-    System.out.println();
+    @Override
+    public E next() {
+      if (!hasNext()) {
+        throw new NoSuchElementException();
+      }
 
-    while(!integerList.isEmpty()) {
-      System.out.println(integerList.remove(0));
+      E result = next.getData();
+
+      next = next.getNext();
+
+      return result;
     }
-
-    System.out.println();
-    System.out.println("Size: " + integerList.size());
-    System.out.println();
-
-    List<Double> doubleList = new LinkedList<>();
-
-    for(int i = 0; i < 5; i++) {
-      doubleList.add((double) i);
-      System.out.println("item " + i + ": " + doubleList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(doubleList);
-    System.out.println();
-
-    while(!doubleList.isEmpty()) {
-      System.out.println(doubleList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + doubleList.size());
-    System.out.println();
-
-
-    List<String> stringList = new LinkedList<>();
-
-    for(int i = 0; i < 5; i++) {
-      stringList.add(String.valueOf(i));
-      System.out.println("item " + i + ": " + stringList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(stringList);
-    System.out.println();
-
-    while(!stringList.isEmpty()) {
-      System.out.println(stringList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + stringList.size());
-    System.out.println();
   }
 }
