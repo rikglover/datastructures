@@ -21,84 +21,6 @@ public class ArrayList<E> implements List<E> {
     data = allocateArray(capacity);
   }
 
-  public static void main(String[] args) {
-    List<Integer> integerList = new ArrayList<>();
-
-    for (int i = 0; i < 5; i++) {
-      integerList.add(i);
-      System.out.println("item i: " + integerList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(integerList);
-    System.out.println();
-
-    while (!integerList.isEmpty()) {
-      System.out.println(integerList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + integerList.size());
-    System.out.println();
-
-    List<Double> doubleList = new ArrayList<>();
-
-    for (int i = 0; i < 5; i++) {
-      doubleList.add((double) i);
-      System.out.println("item i: " + doubleList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(doubleList);
-    System.out.println();
-
-    while (!doubleList.isEmpty()) {
-      System.out.println(doubleList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + doubleList.size());
-    System.out.println();
-
-    List<String> stringList = new ArrayList<>();
-
-    for (int i = 0; i < 5; i++) {
-      stringList.add(String.valueOf(i));
-      System.out.println("item i: " + stringList.get(i));
-    }
-
-    System.out.println();
-    System.out.println(stringList);
-    System.out.println();
-
-    while (!stringList.isEmpty()) {
-      System.out.println(stringList.remove(0));
-    }
-
-    System.out.println();
-    System.out.println("Size: " + stringList.size());
-    System.out.println();
-
-    list.List<Integer> iteratorList = new ArrayList<>();
-
-    iteratorList.add(1);
-    iteratorList.add(2);
-    iteratorList.add(3);
-    iteratorList.add(4);
-    iteratorList.add(5);
-
-    for (int i : iteratorList) {
-      System.out.println("iteratorList: " + i);
-    }
-
-    System.out.println();
-    System.out.println();
-
-    for (int j : iteratorList) {
-      System.out.println("iteratorList: " + j);
-    }
-  }
-
   @Override
   public int size() {
     return size;
@@ -255,6 +177,84 @@ public class ArrayList<E> implements List<E> {
       nextIndex += 1;
 
       return result;
+    }
+  }
+
+  public static void main(String[] args) {
+    List<Integer> integerList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      integerList.add(i);
+      System.out.println("item i: " + integerList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(integerList);
+    System.out.println();
+
+    while (!integerList.isEmpty()) {
+      System.out.println(integerList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + integerList.size());
+    System.out.println();
+
+    List<Double> doubleList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      doubleList.add((double) i);
+      System.out.println("item i: " + doubleList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(doubleList);
+    System.out.println();
+
+    while (!doubleList.isEmpty()) {
+      System.out.println(doubleList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + doubleList.size());
+    System.out.println();
+
+    List<String> stringList = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+      stringList.add(String.valueOf(i));
+      System.out.println("item i: " + stringList.get(i));
+    }
+
+    System.out.println();
+    System.out.println(stringList);
+    System.out.println();
+
+    while (!stringList.isEmpty()) {
+      System.out.println(stringList.remove(0));
+    }
+
+    System.out.println();
+    System.out.println("Size: " + stringList.size());
+    System.out.println();
+
+    list.List<Integer> iteratorList = new ArrayList<>();
+
+    iteratorList.add(1);
+    iteratorList.add(2);
+    iteratorList.add(3);
+    iteratorList.add(4);
+    iteratorList.add(5);
+
+    for (int i : iteratorList) {
+      System.out.println("iteratorList: " + i);
+    }
+
+    System.out.println();
+    System.out.println();
+
+    for (int j : iteratorList) {
+      System.out.println("iteratorList: " + j);
     }
   }
 }
