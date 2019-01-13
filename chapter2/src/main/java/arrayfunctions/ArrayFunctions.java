@@ -95,6 +95,25 @@ public class ArrayFunctions {
     }
   }
 
+  public static <T extends Comparable<T>> void selectionSort(T[] data) {
+    for(int i = 0; i < data.length - 1; i++) {
+      int smallestIndex = i;
+
+      for(int j = i + 1; j < data.length; j++) {
+        if(Objects.compare(data[j], data[smallestIndex], T::compareTo) < 0) {
+          smallestIndex = j;
+        }
+      }
+
+      if(i != smallestIndex) {
+        T temp = data[smallestIndex];
+
+        data[smallestIndex] = data[i];
+        data[i] = temp;
+      }
+    }
+  }
+
   public static void displayArray(int[] data) {
     for (int datum : data) {
       System.out.print(datum + " ");

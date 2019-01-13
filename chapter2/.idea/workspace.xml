@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57d3c3a8-1d22-4444-a76a-d7eb48594b61" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
+    <list default="true" id="57d3c3a8-1d22-4444-a76a-d7eb48594b61" name="Default Changelist" comment="Chapter 2, section 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/3/b/3b562c276149a7b391f15922d57cba864572512b" beforeDir="false" afterPath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/3/b/3b562c276149a7b391f15922d57cba864572512b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/a/6/a692723ca3ec786ad035a50791f4889ee5ef5fd2" beforeDir="false" afterPath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/a/6/a692723ca3ec786ad035a50791f4889ee5ef5fd2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../chapter3/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
@@ -23,11 +20,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/chapter2$ArrayFunctionsTest.ic" NAME="ArrayFunctionsTest Coverage Results" MODIFIED="1547339548790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/chapter2$ArrayFunctionsTest.ic" NAME="ArrayFunctionsTest Coverage Results" MODIFIED="1547357141507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>arrayfunctions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/chapter2$Test.ic" NAME="Test Coverage Results" MODIFIED="1544744849685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/chapter2$ArrayFunctions.ic" NAME="ArrayFunctions Coverage Results" MODIFIED="1544999462507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>arrayfunctions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/chapter2$ArrayFunctionsTest_testSelectionSort.ic" NAME="ArrayFunctionsTest.testSelectionSort Coverage Results" MODIFIED="1547362253598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>arrayfunctions.*</FILTER>
     </SUITE>
   </component>
@@ -69,14 +69,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5925" />
-          <entry key="txt" value="10104" />
+          <entry key="java" value="7427" />
+          <entry key="txt" value="10155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5925" />
-          <entry key="PLAIN_TEXT" value="10104" />
+          <entry key="JAVA" value="7427" />
+          <entry key="PLAIN_TEXT" value="10155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -123,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="315">
+              <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,8 +135,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="484">
+              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -526,8 +526,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Test.java" />
         <option value="$PROJECT_DIR$/Questions_2_2.txt" />
         <option value="$PROJECT_DIR$/Questions_2_3.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java" />
         <option value="$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java" />
       </list>
     </option>
@@ -539,8 +539,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1001" />
-    <option name="y" value="76" />
+    <option name="x" value="986" />
+    <option name="y" value="49" />
     <option name="width" value="1402" />
     <option name="height" value="1283" />
   </component>
@@ -592,6 +592,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="chapter2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapter2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapter2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapter2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="arrayfunctions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -602,7 +617,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547339608844" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547362252734" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -632,7 +647,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayFunctionsTest">
+  <component name="RunManager" selected="JUnit.ArrayFunctionsTest.testSelectionSort">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -682,6 +697,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ArrayFunctionsTest.testSelectionSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter2_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="arrayfunctions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="arrayfunctions" />
+      <option name="MAIN_CLASS_NAME" value="arrayfunctions.ArrayFunctionsTest" />
+      <option name="METHOD_NAME" value="testSelectionSort" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -709,9 +741,11 @@
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.ArrayFunctions" />
       <item itemvalue="JUnit.ArrayFunctionsTest" />
+      <item itemvalue="JUnit.ArrayFunctionsTest.testSelectionSort" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ArrayFunctionsTest.testSelectionSort" />
         <item itemvalue="JUnit.ArrayFunctionsTest" />
         <item itemvalue="Application.ArrayFunctions" />
         <item itemvalue="Application.Test" />
@@ -734,7 +768,7 @@
       <workItem from="1545264284768" duration="7000" />
       <workItem from="1545264413031" duration="8000" />
       <workItem from="1545369911107" duration="2000" />
-      <workItem from="1547338354829" duration="1188000" />
+      <workItem from="1547338354829" duration="5005000" />
     </task>
     <task id="LOCAL-00001" summary="Chapter 2 initial commit">
       <created>1544594084744</created>
@@ -778,14 +812,60 @@
       <option name="project" value="LOCAL" />
       <updated>1545026289492</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Chapter 2 (Adding Generic Binary Search)">
+      <created>1547339652473</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1547339652473</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Chapter 2 (Formatting)">
+      <created>1547339899337</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547339899337</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 22m 35s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 22m 50s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 23m 25s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 23m 53s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 25m 32s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest - 2019.01.12 at 21h 25m 43s.xml">
+      <configuration name="ArrayFunctionsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 47m 21s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 46m 43s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 50m 29s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 50m 39s.xml">
+      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24452000" />
+    <option name="totallyTimeSpent" value="28269000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1001" y="76" width="1402" height="1283" extended-state="0" />
+    <frame x="986" y="49" width="1402" height="1283" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49955714" visible="true" weight="0.24705882" />
@@ -797,7 +877,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31234258" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31234258" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3988245" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -805,7 +885,7 @@
       <window_info anchor="bottom" id="Build" order="7" weight="0.32949513" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3299748" />
       <window_info anchor="bottom" id="SonarLint" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" />
@@ -813,7 +893,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" visible="true" weight="0.32941177" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.32941177" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Gradle" order="7" weight="0.32941177" />
@@ -833,7 +913,9 @@
     <MESSAGE value="Chapter 2 (all but the last problem)" />
     <MESSAGE value="Chapter 2" />
     <MESSAGE value="Chapter 2, section 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chapter 2, section 3" />
+    <MESSAGE value="Chapter 2 (Adding Generic Binary Search)" />
+    <MESSAGE value="Chapter 2 (Formatting)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chapter 2 (Formatting)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/out/production/classes/Test.class" />
@@ -902,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -919,10 +991,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="484">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
