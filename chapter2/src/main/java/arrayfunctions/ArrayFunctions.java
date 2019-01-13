@@ -3,6 +3,7 @@ package arrayfunctions;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -142,6 +143,26 @@ public class ArrayFunctions {
         left = mid + 1;
       } else {
         return mid;
+      }
+    }
+
+    return -1;
+  }
+
+  public static <T extends Comparable<T>> int binarySearch(T[] data, T item) {
+    int low = 0;
+    int high = data.length - 1;
+
+    while(low <= high) {
+      int mid = (high + low) / 2;
+      int compareResult = Objects.compare(item, data[mid], T::compareTo);
+
+      if(compareResult == 0) {
+        return mid;
+      } else if (compareResult > 0) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
       }
     }
 
