@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
-
 public class ArrayFunctions {
 
   public static int linearSearch(int[] data, int target) {
@@ -78,16 +77,16 @@ public class ArrayFunctions {
   }
 
   public static void selectionSort(int[] data) {
-    for(int i = 0; i < data.length - 1; i++) {
+    for (int i = 0; i < data.length - 1; i++) {
       int nextSmallestIndex = i;
 
-      for(int j = i + 1; j < data.length; j++) {
-        if(data[j] < data[nextSmallestIndex]) {
+      for (int j = i + 1; j < data.length; j++) {
+        if (data[j] < data[nextSmallestIndex]) {
           nextSmallestIndex = j;
         }
       }
 
-      if(i != nextSmallestIndex) {
+      if (i != nextSmallestIndex) {
         int temp = data[i];
 
         data[i] = data[nextSmallestIndex];
@@ -134,12 +133,12 @@ public class ArrayFunctions {
     int left = 0;
     int right = data.length - 1;
 
-    while(left <= right) {
+    while (left <= right) {
       int mid = (left + right) / 2;
 
-      if(target < data[mid]) {
+      if (target < data[mid]) {
         right = mid - 1;
-      } else if(target > data[mid]) {
+      } else if (target > data[mid]) {
         left = mid + 1;
       } else {
         return mid;
@@ -153,11 +152,11 @@ public class ArrayFunctions {
     int low = 0;
     int high = data.length - 1;
 
-    while(low <= high) {
+    while (low <= high) {
       int mid = (high + low) / 2;
       int compareResult = Objects.compare(item, data[mid], T::compareTo);
 
-      if(compareResult == 0) {
+      if (compareResult == 0) {
         return mid;
       } else if (compareResult > 0) {
         low = mid + 1;
@@ -211,9 +210,13 @@ public class ArrayFunctions {
       arraySize *= 2;
     } while (arraySize < 200000);
 
-    sortTimes.entrySet().forEach(entry -> {
-      System.out.println("ArraySize = " + entry.getKey() + " -- Time = " + entry.getValue());
-    });
+    sortTimes
+        .entrySet()
+        .forEach(
+            entry -> {
+              System.out.println(
+                  "ArraySize = " + entry.getKey() + " -- Time = " + entry.getValue());
+            });
 
     int[] sumData = new int[100];
 
@@ -224,15 +227,15 @@ public class ArrayFunctions {
     int[] maxData = new int[100];
 
     randomFill(maxData, 100);
-    long max = Arrays.stream(maxData).mapToLong(x -> x).max()
-        .orElseThrow(IllegalStateException::new);
+    long max =
+        Arrays.stream(maxData).mapToLong(x -> x).max().orElseThrow(IllegalStateException::new);
     System.out.println("Max = " + max(maxData) + " actual max = " + max);
 
     int[] minData = new int[100];
 
     randomFill(minData, 100);
-    long min = Arrays.stream(minData).mapToLong(x -> x).min()
-        .orElseThrow(IllegalStateException::new);
+    long min =
+        Arrays.stream(minData).mapToLong(x -> x).min().orElseThrow(IllegalStateException::new);
     System.out.println("min = " + min(minData) + " actual min = " + min);
 
     Random random = new Random();
@@ -257,11 +260,11 @@ public class ArrayFunctions {
       long delta = time2 - time1;
       int indexOfRandomTarget = binarySearch(selectionSortData, randomTarget);
 
-      if(!isSorted(selectionSortData)) {
+      if (!isSorted(selectionSortData)) {
         throw new IllegalStateException("Array is not sorted");
       }
 
-      if(selectionSortData[indexOfRandomTarget] != randomTarget) {
+      if (selectionSortData[indexOfRandomTarget] != randomTarget) {
         throw new IllegalStateException("Index found is not valid");
       }
 
@@ -269,7 +272,6 @@ public class ArrayFunctions {
 
       selectionSortArraySize *= 2;
     }
-
 
     int[] lastData = new int[100];
 
@@ -282,11 +284,10 @@ public class ArrayFunctions {
 
     int result = binarySearch(lastData, target);
 
-    if(lastData[result] != target) {
+    if (lastData[result] != target) {
       throw new IllegalStateException("Value not found");
     }
 
     System.out.println("Found " + target + " at index " + index);
   }
-
 }

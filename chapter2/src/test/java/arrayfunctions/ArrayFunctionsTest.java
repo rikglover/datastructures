@@ -11,9 +11,9 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchEvenSizeArray() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
 
-    for(int i = 0; i < data.length; i++) {
+    for (int i = 0; i < data.length; i++) {
       int expectedResult = i;
       int actualResult = ArrayFunctions.binarySearch(data, data[i]);
 
@@ -23,7 +23,7 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchEvenSizeArrayNotFoundSmall() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
 
     int expectedResult = -1;
     int actualResult = ArrayFunctions.binarySearch(data, 0);
@@ -33,7 +33,7 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchEvenSizeArrayNotFoundBig() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
 
     int expectedResult = -1;
     int actualResult = ArrayFunctions.binarySearch(data, 20);
@@ -43,9 +43,9 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchOddSizeArray() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17};
 
-    for(int i = 0; i < data.length; i++) {
+    for (int i = 0; i < data.length; i++) {
       int expectedResult = i;
       int actualResult = ArrayFunctions.binarySearch(data, data[i]);
 
@@ -55,7 +55,7 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchOddSizeArrayNotFoundSmall() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17};
 
     int expectedResult = -1;
     int actualResult = ArrayFunctions.binarySearch(data, 0);
@@ -65,7 +65,7 @@ public class ArrayFunctionsTest {
 
   @Test
   public void testBinarySearchOddSizeArrayNotFoundBig() {
-    Integer[] data = { 1, 3, 5, 7, 9, 11, 13, 15, 17 };
+    Integer[] data = {1, 3, 5, 7, 9, 11, 13, 15, 17};
 
     int expectedResult = -1;
     int actualResult = ArrayFunctions.binarySearch(data, 20);
