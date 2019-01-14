@@ -76,6 +76,20 @@ public class ArrayFunctions {
     }
   }
 
+  public static <T extends Comparable<T>> void insertionSort2(T[] data) {
+    for(int i = 1; i < data.length; i++) {
+      T key = data[i];
+      int j = i - 1;
+
+      while(j >= 0 && Objects.compare(key, data[j], T::compareTo) < 0) {
+        data[j + 1] = data[j];
+        j -= 1;
+      }
+
+      data[j + 1] = key;
+    }
+  }
+
   public static void selectionSort(int[] data) {
     for (int i = 0; i < data.length - 1; i++) {
       int nextSmallestIndex = i;
