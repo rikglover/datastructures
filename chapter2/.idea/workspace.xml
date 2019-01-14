@@ -30,6 +30,9 @@
     <SUITE FILE_PATH="coverage/chapter2$ArrayFunctions.ic" NAME="ArrayFunctions Coverage Results" MODIFIED="1544999462507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>arrayfunctions.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/chapter2$ArrayFunctionsTest_testBubbleSort.ic" NAME="ArrayFunctionsTest.testBubbleSort Coverage Results" MODIFIED="1547453392770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>arrayfunctions.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/chapter2$ArrayFunctionsTest_testSelectionSort.ic" NAME="ArrayFunctionsTest.testSelectionSort Coverage Results" MODIFIED="1547362253598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>arrayfunctions.*</FILTER>
     </SUITE>
@@ -63,23 +66,24 @@
     <session id="-142297983">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7963" />
-          <entry key="txt" value="10186" />
+          <entry key="java" value="8639" />
+          <entry key="txt" value="10195" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7963" />
-          <entry key="PLAIN_TEXT" value="10186" />
+          <entry key="JAVA" value="8639" />
+          <entry key="PLAIN_TEXT" value="10195" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -126,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+            <state relative-caret-position="547">
+              <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +142,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="134" column="25" lean-forward="true" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+            <state relative-caret-position="527">
+              <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,7 +154,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Objects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
+            <state relative-caret-position="2265">
               <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
             </state>
           </provider>
@@ -159,7 +163,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Comparator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
+            <state relative-caret-position="1815">
               <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
             </state>
           </provider>
@@ -543,9 +547,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="986" />
-    <option name="y" value="49" />
+    <option name="y" value="61" />
     <option name="width" value="1402" />
-    <option name="height" value="1283" />
+    <option name="height" value="1271" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -553,9 +557,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -614,13 +616,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547424994307" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547453390957" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -650,7 +654,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayFunctionsTest.testInsertionSort">
+  <component name="RunManager" selected="JUnit.ArrayFunctionsTest.testBubbleSort">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -671,14 +675,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="chapter2_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -695,6 +691,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="arrayfunctions" />
       <option name="MAIN_CLASS_NAME" value="arrayfunctions.ArrayFunctionsTest" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArrayFunctionsTest.testBubbleSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter2_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="arrayfunctions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="arrayfunctions" />
+      <option name="MAIN_CLASS_NAME" value="arrayfunctions.ArrayFunctionsTest" />
+      <option name="METHOD_NAME" value="testBubbleSort" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -758,19 +771,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Test" />
       <item itemvalue="Application.ArrayFunctions" />
       <item itemvalue="JUnit.ArrayFunctionsTest" />
       <item itemvalue="JUnit.ArrayFunctionsTest.testSelectionSort" />
       <item itemvalue="JUnit.ArrayFunctionsTest.testInsertionSort" />
+      <item itemvalue="JUnit.ArrayFunctionsTest.testBubbleSort" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ArrayFunctionsTest.testBubbleSort" />
         <item itemvalue="JUnit.ArrayFunctionsTest.testInsertionSort" />
         <item itemvalue="JUnit.ArrayFunctionsTest.testSelectionSort" />
         <item itemvalue="JUnit.ArrayFunctionsTest" />
         <item itemvalue="Application.ArrayFunctions" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -790,7 +803,8 @@
       <workItem from="1545264284768" duration="7000" />
       <workItem from="1545264413031" duration="8000" />
       <workItem from="1545369911107" duration="2000" />
-      <workItem from="1547338354829" duration="6913000" />
+      <workItem from="1547338354829" duration="8708000" />
+      <workItem from="1547447509070" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="Chapter 2 initial commit">
       <created>1544594084744</created>
@@ -855,25 +869,17 @@
       <option name="project" value="LOCAL" />
       <updated>1547362289976</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Chapter 2 (Adding Generic Insertion Sort)">
+      <created>1547425067215</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1547425067215</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 25m 32s.xml">
-      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ArrayFunctionsTest - 2019.01.12 at 21h 25m 43s.xml">
-      <configuration name="ArrayFunctionsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 21h 47m 21s.xml">
-      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 46m 43s.xml">
-      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 50m 29s.xml">
-      <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ArrayFunctionsTest_testSelectionSort - 2019.01.12 at 22h 50m 39s.xml">
       <configuration name="ArrayFunctionsTest.testSelectionSort" configurationId="JUnit" />
     </history-entry>
@@ -889,15 +895,30 @@
     <history-entry file="ArrayFunctionsTest_testInsertionSort - 2019.01.13 at 15h 36m 39s.xml">
       <configuration name="ArrayFunctionsTest.testInsertionSort" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ArrayFunctionsTest_testInsertionSort - 2019.01.13 at 16h 16m 38s.xml">
+      <configuration name="ArrayFunctionsTest.testInsertionSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testBubbleSort - 2019.01.13 at 22h 35m 59s.xml">
+      <configuration name="ArrayFunctionsTest.testBubbleSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testBubbleSort - 2019.01.13 at 22h 47m 16s.xml">
+      <configuration name="ArrayFunctionsTest.testBubbleSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testBubbleSort - 2019.01.13 at 23h 35m 28s.xml">
+      <configuration name="ArrayFunctionsTest.testBubbleSort" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArrayFunctionsTest_testBubbleSort - 2019.01.13 at 23h 41m 44s.xml">
+      <configuration name="ArrayFunctionsTest.testBubbleSort" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30177000" />
+    <option name="totallyTimeSpent" value="34832000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="986" y="49" width="1402" height="1283" extended-state="0" />
+    <frame x="986" y="61" width="1402" height="1271" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49955714" visible="true" weight="0.24705882" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49955714" visible="true" weight="0.25073528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -906,7 +927,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31234258" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31552163" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3988245" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -945,7 +966,8 @@
     <MESSAGE value="Chapter 2 (Adding Generic Binary Search)" />
     <MESSAGE value="Chapter 2 (Formatting)" />
     <MESSAGE value="Chapter 2 (Adding Generic Selection Sort)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chapter 2 (Adding Generic Selection Sort)" />
+    <MESSAGE value="Chapter 2 (Adding Generic Insertion Sort)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chapter 2 (Adding Generic Insertion Sort)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -983,6 +1005,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Objects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1815">
+          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56145">
@@ -1012,31 +1055,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Comparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/arrayfunctions/ArrayFunctions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+        <state relative-caret-position="547">
+          <caret line="128" column="13" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1045,8 +1067,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/arrayfunctions/ArrayFunctionsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="134" column="25" lean-forward="true" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+        <state relative-caret-position="527">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

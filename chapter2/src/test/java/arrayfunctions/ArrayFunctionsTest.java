@@ -149,6 +149,43 @@ public class ArrayFunctionsTest {
     assertThat(allTheSame).isEqualTo(expectedResult);
   }
 
+  @Test
+  public void testBubbleSort() {
+    Random random = new Random();
+
+    for (int i = 0; i < 100; i++) {
+      int arraySize = Math.abs(random.nextInt(1000));
+
+      Integer[] data = new Integer[arraySize];
+
+      randomFill(data);
+
+      ArrayFunctions.bubbleSort(data);
+
+      assertThat(isSorted(data)).isTrue();
+    }
+
+    Integer[] sortedReverse = { 1000, 900, 800, 700, 600, 500, 300, 200, 100, 0 };
+
+    ArrayFunctions.bubbleSort(sortedReverse);
+
+    assertThat(isSorted(sortedReverse)).isTrue();
+
+    Integer[] sortedIncreasing = { 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+
+    ArrayFunctions.bubbleSort(sortedReverse);
+
+    assertThat(isSorted(sortedIncreasing)).isTrue();
+
+
+    Integer[] allTheSame = { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+    Integer[] expectedResult = { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+
+    ArrayFunctions.bubbleSort(allTheSame);
+
+    assertThat(allTheSame).isEqualTo(expectedResult);
+  }
+
   private static void randomFill(Integer[] data) {
     Random random = new Random();
 

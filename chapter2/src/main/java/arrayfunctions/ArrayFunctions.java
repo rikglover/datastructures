@@ -109,6 +109,26 @@ public class ArrayFunctions {
     }
   }
 
+  public static <T extends Comparable<T>> void bubbleSort(T[] data) {
+    int n = data.length - 1;
+
+    do {
+      int newn = 0;
+
+      for(int i = 0; i < n; i++) {
+        if(Objects.compare(data[i + 1], data[i], T::compareTo) < 0) {
+          T item = data[i + 1];
+
+          data[i + 1] = data[i];
+          data[i] = item;
+          newn = i + 1;
+        }
+      }
+
+      n = newn;
+    } while(n > 0);
+  }
+
   public static <T extends Comparable<T>> void selectionSort(T[] data) {
     for(int i = 0; i < data.length - 1; i++) {
       int smallestIndex = i;
