@@ -42,12 +42,7 @@ public class Recursion {
     if (s.length() <= 1) {
       return s;
     } else {
-      int indexOfLastChar = s.length() - 1;
-
-      String lastCharSubstring = s.substring(indexOfLastChar);
-      String substringBeforeLastChar = s.substring(0, indexOfLastChar);
-
-      return lastCharSubstring + reverse(substringBeforeLastChar);
+      return reverse(s.substring(1)) + s.charAt(0);
     }
   }
 
