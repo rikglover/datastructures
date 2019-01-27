@@ -37,4 +37,44 @@ public class Recursion {
       return 1 + length(s.substring(1));
     }
   }
+
+  public static String reverse(String s) {
+    if (s.length() <= 1) {
+      return s;
+    } else {
+      int indexOfLastChar = s.length() - 1;
+
+      String lastCharSubstring = s.substring(indexOfLastChar);
+      String substringBeforeLastChar = s.substring(0, indexOfLastChar);
+
+      return lastCharSubstring + reverse(substringBeforeLastChar);
+    }
+  }
+
+  public static int fib(int n) {
+    if (n == 0 || n == 1) {
+      return 1;
+    } else {
+      return fib(n - 1) + fib(n - 2);
+    }
+  }
+
+  public static int gcd(int m, int n) {
+    if (n == 0) {
+      return m;
+    } else {
+      return gcd(n, m % n);
+    }
+  }
+
+  public static String bits(int n) {
+    if (n == 0 || n == 1) {
+      return String.valueOf(n);
+    } else {
+      int bit = n % 2;
+      int remainingBits = n / 2;
+
+      return bits(remainingBits) + String.valueOf(bit);
+    }
+  }
 }
