@@ -166,7 +166,7 @@ public class RecursionTest {
 
   @Test
   public void bits() {
-    for (int i = 0; i < 1000000; i++) {
+    for (int i = 0; i < 10000; i++) {
       String actualBits = Recursion.bits(i);
       String expectedBits = Integer.toBinaryString(i);
 
