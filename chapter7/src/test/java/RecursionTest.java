@@ -74,7 +74,7 @@ public class RecursionTest {
   @Test
   @Parameters(method = "getPowParameters")
   public void pow(int m, int n, int expectedResults) {
-    int actualResults = Recursion.pow(m, n);
+    int actualResults = Recursion.pow2(m, n);
 
     assertThat(expectedResults).isEqualTo(actualResults);
   }

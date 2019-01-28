@@ -30,6 +30,20 @@ public class Recursion {
     }
   }
 
+  public static int pow2(int m, int n) {
+    if (n == 1) {
+      return m;
+    } else {
+      int powResult = pow(m, n / 2);
+
+      if (n % 2 == 1) {
+        return powResult * powResult * m;
+      } else {
+        return powResult * powResult;
+      }
+    }
+  }
+
   public static int length(String s) {
     if (StringUtils.EMPTY.equals(s)) {
       return 0;
