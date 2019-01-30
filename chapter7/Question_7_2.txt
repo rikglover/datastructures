@@ -70,3 +70,10 @@ public static int pow2(int m, int n) {
   }
 }
 
+
+5)
+
+for n >= 2, times(n, m) = fib(m - n + 1)
+for n = 1, times(1, m) = fib(m - 2)
+
+So, fib(1) appears fib(98) times in fib(100) and fib(2) appears fib(99) times in fib(100)
