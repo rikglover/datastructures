@@ -80,3 +80,23 @@ So, fib(1) appears fib(98) times in fib(100) and fib(2) appears fib(99) times in
 
 
 6) Answered on white board. Got the answer correct.
+
+7a) Answered correctly on whiteboard
+7b) Missed implementation of code. Did this...
+
+  public static int mul(int m, int n) {
+    if (n == 1) {
+      return m;
+    } else {
+      return m + mul(m, n - 1);
+    }
+  }
+
+  but this does not handle the case of n == 0 correctly. My writing of the stack frames was correct
+  after using the correct implementation.
+
+7c) Answered correctly on whiteboard
+
+7d) Got the implementation right. Had a brainfart in the stack diagram.
+
+7e)

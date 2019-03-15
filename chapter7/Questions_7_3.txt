@@ -1,0 +1,151 @@
+1a) On whiteboard. Got answer right.
+1b) On whiteboard. Got answer right.
+1c) On whiteboard. Got answer right, although the book's answer is wrong.
+    I verified by actually running the test.
+
+
+2)
+
+public static int linearSearch(Object[] data, Object target) {
+  return linearSearch(data, target, 0);
+}
+
+private static int linearSearch(Object[] data, Object target, int start) {
+  if(start >= data.length) {
+    return -1;
+  }
+
+  if(Objects.equals(data[start], target)) {
+    return start;
+  }
+
+  return linearSearch(data, target, start + 1);
+}
+
+
+3 and 4)
+
+public static void main(String[] args) {
+  Integer[] intData = { 1, 5, 10, 15, 20, 25, 30, 35 };
+  String[] stringData = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
+  Double[] doubleData = { 1.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0 };
+
+  int intIndex = linearSearch(intData, 15);
+  int intIndex2 = binarySearch(intData, 15);
+
+  int stringIndex = linearSearch(stringData, "d");
+  int stringIndex2 = binarySearch(stringData, "d");
+
+  int doubleIndex = linearSearch(doubleData, 5.0);
+  int doubleIndex2 = binarySearch(doubleData, 5.0);
+
+
+  System.out.println("Linear Search: The target 5 can be found at index " + intIndex);
+  System.out.println("Binary Search: The target 5 can be found at index " + intIndex2);
+
+  System.out.println("The target d can be found at index " + stringIndex);
+  System.out.println("The target d can be found at index " + stringIndex2);
+
+  System.out.println("The target 5 can be found at index " + doubleIndex);
+  System.out.println("The target 5 can be found at index " + doubleIndex2);
+}
+
+5) In the worst case, recursive linear search has to examine every item, which makes it O(n).
+
+6) In the worst case, recursive binary search divides the problem in half with each recursive step.
+This makes it O(log(n)).
+
+7)
+
+public static <T extends Comparable<? super T>> void insertionSort(T[] data) {
+  for(int i = 1; i < data.length; i++) {
+    T key = data[i];
+    int j = i - 1;
+
+    while(j >= 0 && Objects.compare(key, data[j], T::compareTo) < 0) {
+      data[j + 1] = data[j];
+      j -= 1;
+    }
+
+    data[j + 1] = key;
+  }
+}
+
+** I accidentally put an int instead of T and forgot the last parameter to compare() **
+** other than that i got it completely right... after quite a bit of working it through **
+** no cheating or hints. I was very proud of myself **
+
+8)
+
+public static void selectionSort(int[] data) {
+  for (int i = 0; i <= data.length; i++) {
+    int nextSmallestIndex = i;
+
+    for (int j = i + 1; j < data.length; j++) {
+      if (data[j] < data[nextSmallestIndex]) {
+        nextSmallestIndex = j;
+      }
+    }
+
+    if (i != nextSmallestIndex) {
+      int temp = data[nextSmallestIndex];
+
+      data[nextSmallestIndex] = data[i];
+      data[i] = temp;
+    }
+  }
+}
+
+9)
+
+public class Fraction implements Comparable<Fraction> {
+  private int num;
+  private int den;
+
+  public Fraction(int num, int den) {
+    this.num = num;
+    this.den = den;
+  }
+
+  public Fraction(int n) {
+    this(n, 1);
+  }
+
+  public void addOn(Fraction f) {
+    num = num * f.den + den * f.num;
+    den *= f.den;
+  }
+
+  public static Fraction add(Fraction f1, Fraction f2) {
+    int n = f1.num * f2.den + f1.den * f2.num;
+    int d = f1.den * f2.den;
+
+    return new Fraction(n, d);
+  }
+
+  @Override
+  public String toString() {
+    return num + "/" + den;
+  }
+
+  public static void main(String[] args) {
+    Fraction f1 = new Fraction(3, 4);
+    Fraction f2 = new Fraction(1, 3);
+    System.out.print(f1 + " + " + f2 + " = ");
+    System.out.println(add(f1, f2));
+    f1.addOn(f2);
+    System.out.println("Using addOn() changes f1 to " + f1);
+  }
+
+  @Override
+  public int compareTo(Fraction otherFraction) {
+
+    if(this.den == otherFraction.den) {
+      return this.num - otherFraction.num;
+    }
+
+    return otherFraction.den - this.den;
+  }
+}
+
+** His answer is slightly different, possibly more efficient. But mine is correct too **
